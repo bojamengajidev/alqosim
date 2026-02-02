@@ -8,10 +8,12 @@ import { MobileNav } from "@/components/nav/mobile-nav";
 import { NavScroll } from "@/components/nav/nav-scroll";
 
 import { mainMenu } from "@/lib/menu.config";
-import { siteConfig } from "@/lib/site.config";
+
 import { cn } from "@/lib/utils";
 import Logo from "@/public/icons/bojamengaji.ico";
-import YKBM from "@/public/icons/ykbm.ico";
+import YKBM from "@/public/icons/ykbm-logo.ico";
+import Alqosim from "@/public/icons/alqosim-logo.ico";
+
 
 interface NavProps {
   className?: string;
@@ -29,18 +31,12 @@ export default function Navigation({ className, children, id }: NavProps) {
           className
         )}
       >
-        <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4 sm:px-8">
+        <div className="mx-auto flex max-w-5xl items-center justify-between py-4">
           <Link
             href="/"
-            className="flex items-center gap-1 transition-opacity hover:opacity-75"
+            className="flex items-center transition-opacity hover:opacity-75"
           >
-            <Image
-              src={Logo}
-              alt="Logo"
-              width={56}
-              height={56}
-              className="w-15 h-auto"
-            />
+         
              <Image
               src={YKBM}
               alt="Yayasan Kajian Boja Mengaji"
@@ -49,8 +45,25 @@ export default function Navigation({ className, children, id }: NavProps) {
               className="w-13 h-auto"
             
             />
+
+               <Image
+              src={Logo}
+              alt="Logo"
+              width={56}
+              height={56}
+              className="w-18 h-auto"
+            />
+
+            <Image
+              src={Alqosim}
+              alt="Masjid Muhammad Al Qosim"
+              width={36}
+              height={36}
+              className="w-auto h-12"
+            
+            />
             <span className="font-poppins text-sm font-semibold">
-              {siteConfig.site_name}
+              Masjid Muhammad <br /> Al Qosim
             </span>
           </Link>
 

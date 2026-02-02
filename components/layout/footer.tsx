@@ -3,7 +3,8 @@ import { ThemeToggle } from "@/components/theme/theme-toggle";
 import { mainMenu, contentMenu } from "@/lib/menu.config";
 import { siteConfig } from "@/lib/site.config";
 import Logo from "@/public/icons/bojamengaji.ico";
-import YKBM from "@/public/icons/ykbm.ico";
+import YKBM from "@/public/icons/ykbm-logo.ico";
+import Alqosim from "@/public/icons/alqosim-logo.ico";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -15,13 +16,7 @@ export default function Footer() {
           <div className="flex flex-col gap-6 not-prose">
             <Link href="/" className="flex items-center gap-3">
               <h3 className="sr-only">{siteConfig.site_name}</h3>
-               <Image
-              src={Logo}
-              alt="Logo"
-              width={56}
-              height={56}
-              className="w-15 h-auto dark:invert"
-            />
+           
              <Image
               src={YKBM}
               alt="Yayasan Kajian Boja Mengaji"
@@ -29,6 +24,22 @@ export default function Footer() {
               height={48}
               className="w-13 h-auto"
             
+            />
+
+                <Image
+              src={Logo}
+              alt="Logo"
+              width={56}
+              height={56}
+              className="w-auto h-13 dark:invert"
+            />
+
+                <Image
+              src={Alqosim}
+              alt="Logo"
+              width={46}
+              height={46}
+              className="w-13 h-auto dark:invert"
             />
             
             </Link>
