@@ -19,7 +19,7 @@ const features = [
   {
     icon: Users,
     title: "Komunitas",
-    desc: "Merajut Ukhuwah Islam",
+    desc: "Merajut Ukhuwah Islamiyah",
   },
   {
     icon: HandCoins,
