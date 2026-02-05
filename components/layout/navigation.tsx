@@ -13,6 +13,8 @@ import { cn } from "@/lib/utils";
 import Logo from "@/public/icons/bojamengaji.ico";
 import YKBM from "@/public/icons/ykbm-logo.ico";
 import Alqosim from "@/public/icons/alqosim-logo.ico";
+import GradientButton from "../ui/gradientbutton";
+import NavbarButton from "../ui/navbarbutton";
 
 
 interface NavProps {
@@ -79,9 +81,9 @@ export default function Navigation({ className, children, id }: NavProps) {
                 </Button>
               ))}
             </div>
-  <Button asChild className="hidden sm:flex dark:invert">
-            <Link href="/wakaf/peluang-jariyah">Wakaf</Link>
-          </Button>
+
+          <GradientButton/>
+       
 
             <ClientOnly>
               <MobileNav />
