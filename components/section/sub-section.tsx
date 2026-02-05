@@ -27,7 +27,7 @@ export default function SubHeader() {
             </h1>
             <HijriCalendar />
             <p className="py-2 text-sm text-justify lg:text-base text-gray-600">
-              Kalender hijriyah dilengkapi dengan pengingat ayyamul bidh. Setia tanggal 13,14,15 bulan hijriyah. 
+              Kalender hijriyah dilengkapi dengan pengingat ayyamul bidh. Setiap tanggal 13,14,15 bulan hijriyah. 
             </p>
           </div>
 
