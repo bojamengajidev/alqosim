@@ -13,8 +13,8 @@ import { cn } from "@/lib/utils";
 import Logo from "@/public/icons/bojamengaji.ico";
 import YKBM from "@/public/icons/ykbm-logo.ico";
 import Alqosim from "@/public/icons/alqosim-logo.ico";
-import GradientButton from "../ui/gradientbutton";
-import NavbarButton from "../ui/navbarbutton";
+import GradientButton from "@/components/ui/gradientbutton";
+
 
 
 interface NavProps {
