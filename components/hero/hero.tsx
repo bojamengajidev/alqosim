@@ -70,7 +70,7 @@ export default function Hero() {
             <div className="md:hidden space-y-4">
               <div className="relative aspect-video rounded-2xl overflow-hidden shadow-lg">
                 <Image
-                  src="/images/hero-img1.jpg"
+                  src="/images/img-header.webp"
                   alt="Hero utama"
                   fill
                   fetchPriority="high"
@@ -86,7 +86,7 @@ export default function Hero() {
 
               <div className="relative aspect-video rounded-2xl overflow-hidden shadow-lg border-4 border-white">
                 <Image
-                  src="/images/hero-img2.jpg"
+                  src="/images/img-header2.webp"
                   alt="Hero kedua"
                   fill
                   loading="lazy"
@@ -105,7 +105,7 @@ export default function Hero() {
               {/* LCP IMAGE */}
               <div className="absolute top-0 right-0 w-[85%] h-[95%] rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/images/hero-img1.jpg"
+                  src="/images/img-header.webp"
                   alt="Hero utama"
                   fill
                   priority
@@ -118,7 +118,7 @@ export default function Hero() {
               {/* SECOND IMAGE */}
               <div className="absolute bottom-[-5%] left-[-5%] w-[55%] h-[70%] rounded-2xl overflow-hidden shadow-xl border-2 border-white">
                 <Image
-                  src="/images/hero-img2.jpg"
+                  src="/images/img-header2.webp"
                   alt="Hero kedua"
                   fill
                   loading="lazy"

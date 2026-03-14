@@ -43,7 +43,7 @@ export default function SubHeader() {
               -mx-4 md:mx-0
               overflow-x-auto
               motion-safe:animate-in
-              motion-safe:fade-in
+              motion-safe:fade-innp
               motion-safe:slide-in-from-bottom-2
               duration-500
               will-change-transform
