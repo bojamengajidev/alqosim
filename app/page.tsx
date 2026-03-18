@@ -23,8 +23,8 @@ export default function Home() {
   return (
 
     <ClientLayout>
-    <section className="px-0 sm:px-10 md:px-10 lg:px-20"> 
     <Hero />
+    <section className="px-0 sm:px-10 md:px-10 lg:px-20"> 
     <SubHeader />
     <FeatureSection />
     <BlogSection/>
