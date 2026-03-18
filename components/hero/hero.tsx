@@ -24,7 +24,7 @@ export default function Hero() {
 
              <h1  className="
               hero-title
-              mb-6
+              mb-8
               text-6xl md:wrap-anywhere dark:text-white
             ">
               Menebarkan Sunnah Rasulullah ﷺ Membangun Umat
