@@ -41,7 +41,7 @@ export default function Hero() {
           </p>
 
           <Link
-            href="/page/jalan-buntu"
+            href="/Tentang-kami"
             className="
               inline-flex items-center gap-2
               rounded-full
