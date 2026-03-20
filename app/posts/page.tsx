@@ -6,6 +6,7 @@ import {
   searchAuthors,
   searchTags,
   searchCategories,
+  getCategoryBySlug,
 } from "@/lib/wordpress";
 
 import {
@@ -51,9 +52,21 @@ export default async function Page({
   const page = pageParam ? parseInt(pageParam, 10) : 1;
   const postsPerPage = 9;
 
+  let categoryId = category;
+
+if (category && isNaN(Number(category))) {
+  const cat = await getCategoryBySlug(category);
+  categoryId = cat?.id?.toString();
+}
+
   // Fetch data based on search parameters using efficient pagination
   const [postsResponse, authors, tags, categories] = await Promise.all([
-    getPostsPaginated(page, postsPerPage, { author, tag, category, search }),
+  getPostsPaginated(page, postsPerPage, {
+  author,
+  tag,
+  category: categoryId,
+  search,
+}),
     search ? searchAuthors(search) : getAllAuthors(),
     search ? searchTags(search) : getAllTags(),
     search ? searchCategories(search) : getAllCategories(),

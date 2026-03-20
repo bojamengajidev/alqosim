@@ -39,6 +39,7 @@ export function FilterPosts({
     value === "all" ? newParams.delete(type) : newParams.set(type, value);
 
     router.push(`/posts?${newParams.toString()}`);
+    router.refresh();
   };
 
   const handleResetFilters = () => {

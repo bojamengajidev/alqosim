@@ -52,7 +52,12 @@ export default async function Page({
 
   // AMBIL DATA DARI EMBED (Lebih cepat karena tidak perlu fetch ulang)
   const author = post._embedded?.author?.[0];
-  const category = post._embedded?.["wp:term"]?.[0]?.[0];
+  const terms = post._embedded?.["wp:term"] ?? [];
+
+  const categories =
+  terms.find((t: any) => t[0]?.taxonomy === "category") ?? [];
+
+  const category = categories[0];
   const featuredMedia = post._embedded?.["wp:featuredmedia"]?.[0];
 
   const date = new Date(post.date).toLocaleDateString("id-ID", {

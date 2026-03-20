@@ -162,15 +162,19 @@ export async function getPostsPaginated(
     search?: string;
   }
 ): Promise<WordPressResponse<Post[]>> {
-  return wpFetchPaginatedGraceful<Post>("/posts", {
+
+  const query: Record<string, any> = {
     _embed: true,
     page,
     per_page: perPage,
-    author: filters?.author,
-    tags: filters?.tag,
-    categories: filters?.category,
-    search: filters?.search,
-  });
+  };
+
+  if (filters?.author) query.author = filters.author;
+  if (filters?.tag) query.tags = filters.tag;
+  if (filters?.category) query.categories = filters.category;
+  if (filters?.search) query.search = filters.search;
+
+  return wpFetchPaginatedGraceful<Post>("/posts", query);
 }
 
 export async function getRecentPosts(filters?: {
@@ -207,8 +211,21 @@ export async function getPostBySlug(slug: string) {
    CATEGORIES
    ========================================================================== */
 
+// export const getAllCategories = () =>
+//   wpFetchGraceful<Category[]>("/categories", [], { per_page: 100 });
+
 export const getAllCategories = () =>
-  wpFetchGraceful<Category[]>("/categories", [], { per_page: 100 });
+  wpFetchGraceful<Category[]>(
+    "/categories",
+    [],
+    {
+      per_page: 100,
+      hide_empty: false,
+      orderby: "name",
+      order: "asc",
+    },
+    ["wordpress", "categories"]
+  );
 
 export const getCategoryById = (id: number) =>
   wpFetch<Category>(`/categories/${id}`);
