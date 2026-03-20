@@ -7,5 +7,5 @@ type SiteConfig = {
 export const siteConfig: SiteConfig = {
   site_name: "Masjid Muhammad Al Qosim",
   site_description: "Yayasan Kajian Boja Mengaji",
-  site_domain: "https://next-wp.com",
+  site_domain: "https://masjidalqosim.com",
 };
