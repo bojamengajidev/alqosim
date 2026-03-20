@@ -34,7 +34,7 @@ export default function BlogCard() {
       </CardContent>
 
       <CardFooter>
-      <Link  className="w-full rounded-md bg-primary py-2 text-primary-foreground" href="/page/jalan-buntu">
+      <Link  className="w-full rounded-md bg-primary py-2 text-primary-foreground" href="/posts">
          <p className="text-center">
           Lihat Selengkapnya
         </p>
