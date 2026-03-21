@@ -18,7 +18,7 @@ export default function BlogCard() {
       <CardHeader>
         <CardTitle>Artikel & Berita</CardTitle>
         <CardDescription>
-          Baca artikel dan berita terkini seputar kegiatan, kajian, dan informasi dari Masjid Muhammad Al Qosim dan Boja Mengaji.
+          Baca artikel dan berita terbaru seputar kegiatan, kajian, dan informasi dari Masjid Muhammad Al Qosim dan Boja Mengaji.
         </CardDescription>
       </CardHeader>
 
