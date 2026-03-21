@@ -12,7 +12,7 @@ const nextConfig: NextConfig = {
       ? [
           {
             protocol: "http",
-            hostname: "bojamengaji.local",
+            hostname: "blog.masjidalqosim.com",
             port: "",
             pathname: "/wp-content/uploads/**",
           },
