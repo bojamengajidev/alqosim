@@ -1,8 +1,8 @@
 // Define the menu items
 export const mainMenu = {
   beranda: "/",
-  "Tentang Kami": "/tentang-kami",
-  "Info Kajian": "/kajian",
+  "Tentang Kami": "/pages/tentang-kami",
+  "Info Kajian": "/pages/kajian",
   blog: "/posts",
 };
 
