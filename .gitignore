@@ -41,3 +41,5 @@ next-env.d.ts
 .factory
 RAILWAY-SETUP.md
 .env*.local
+node_modules
+.env
