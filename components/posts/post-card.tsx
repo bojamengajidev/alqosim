@@ -15,6 +15,13 @@ export function PostCard({ post }: { post: Post }) {
     year: "numeric",
   });
 
+  function cleanHtml(html: string) {
+  return html
+    .replace(/<script[\s\S]*?>[\s\S]*?<\/script>/gi, "")
+    .replace(/on\w+="[^"]*"/g, "");
+}
+  
+
   return (
     <Link
       href={`/posts/${post.slug}`}
@@ -43,13 +50,13 @@ export function PostCard({ post }: { post: Post }) {
         </div>
         <div
           dangerouslySetInnerHTML={{
-            __html: post.title?.rendered || "Untitled Post",
+           __html: cleanHtml(post.title?.rendered || "")
           }}
           className="text-xl text-primary font-medium group-hover:underline decoration-muted-foreground underline-offset-4 decoration-dotted transition-all"
         ></div>
         <div className="text-sm">
           {post.excerpt?.rendered
-            ? truncateHtml(post.excerpt.rendered, 12)
+            ? truncateHtml(cleanHtml(post.excerpt.rendered), 12)
             : "No excerpt available"}
         </div>
       </div>
@@ -64,3 +71,4 @@ export function PostCard({ post }: { post: Post }) {
     </Link>
   );
 }
+

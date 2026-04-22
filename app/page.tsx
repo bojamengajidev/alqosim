@@ -25,10 +25,10 @@ export default function Home() {
     <ClientLayout>
     <Hero />
     <section className="px-0 sm:px-10 md:px-10 lg:px-20"> 
-    <SubHeader />
-    <FeatureSection />
-    <BlogSection/>
-    <SubMedia/>
+      <SubHeader />
+      <FeatureSection />
+      <BlogSection/>
+      <SubMedia/>
     </section>
     <SubAmalan />
     <Donasi />
