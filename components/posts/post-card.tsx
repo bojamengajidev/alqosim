@@ -1,4 +1,7 @@
-// import Image from "next/image";
+"use client";
+
+import DOMPurify from "dompurify";
+
 import Link from "next/link";
 
 import { Post } from "@/lib/wordpress.d";
@@ -15,10 +18,10 @@ export function PostCard({ post }: { post: Post }) {
     year: "numeric",
   });
 
-  function cleanHtml(html: string) {
-  return html
-    .replace(/<script[\s\S]*?>[\s\S]*?<\/script>/gi, "")
-    .replace(/on\w+="[^"]*"/g, "");
+ function cleanHtml(html: string) {
+  return DOMPurify.sanitize(html, {
+    USE_PROFILES: { html: true },
+  });
 }
   
 
@@ -49,8 +52,8 @@ export function PostCard({ post }: { post: Post }) {
           )}
         </div>
         <div
-          dangerouslySetInnerHTML={{
-           __html: cleanHtml(post.title?.rendered || "")
+           dangerouslySetInnerHTML={{
+            __html: cleanHtml(post.title?.rendered || ""),
           }}
           className="text-xl text-primary font-medium group-hover:underline decoration-muted-foreground underline-offset-4 decoration-dotted transition-all"
         ></div>
