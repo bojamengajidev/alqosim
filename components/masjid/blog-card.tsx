@@ -28,8 +28,10 @@ export default function BlogCard() {
          alt="poster penerimaan peserta didik baru"
          width={360}
          height={640}
-         loading="lazy"
-          className="rounded-xl w-full h-auto"
+         priority
+        className="rounded-xl w-full h-auto"
+          
+        
         />
       </CardContent>
 

@@ -24,7 +24,8 @@ export default function Donasi() {
                             alt="poster program wakaf jariyah"
                             width={360}
                             height={640}
-                            loading="lazy"
+                            priority
+                            className="w-full h-auto"
                           />
         </section>
 
