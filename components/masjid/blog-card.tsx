@@ -23,13 +23,13 @@ export default function BlogCard() {
       </CardHeader>
 
       <CardContent>
-        <Image
-          src="/images/ppdb.webp"
-          alt=""
-          width={360}
-          height={640}
-          loading="lazy"
-          className="rounded-xl"
+       <Image
+         src="/images/ppdb.webp"
+         alt="poster penerimaan peserta didik baru"
+         width={360}
+         height={640}
+         loading="lazy"
+          className="rounded-xl w-full h-auto"
         />
       </CardContent>
 

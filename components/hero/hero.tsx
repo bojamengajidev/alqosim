@@ -8,7 +8,7 @@ export default function Hero() {
       {/* BACKGROUND IMAGE */}
       <Image
         src="/images/img-drone.webp"
-        alt="Masjid Muhammad Al Qosim"
+        alt="Foto Masjid Muhammad Al Qosim diambil dari udara"
         fill
         priority
         sizes="100vw"
@@ -30,10 +30,7 @@ export default function Hero() {
               Menebarkan Sunnah Rasulullah ﷺ Membangun Umat
             </h1>
 
-          {/* <h1 className="text-3xl md:text-5xl font-bold mb-6 leading-tight">
-            Menebarkan Sunnah Rasulullah ﷺ <br />
-            Membangun Umat
-          </h1> */}
+         
 
           <p className="max-w-xl mx-auto mb-28 text-sm md:text-base text-gray">
             Masjid Muhammad Al Qosim pusat pembinaan umat melalui dakwah dan
@@ -56,7 +53,7 @@ export default function Hero() {
           >
             <Image
               src="/icons/icon-eye.svg"
-              alt=""
+              alt="icon selengkapnya"
               width={18}
               height={18}
             />

@@ -4,7 +4,7 @@ import { fontSans, fontSerif, fontCaption, fontArabic} from "@/lib/fonts";
 import { cn } from "@/lib/utils";
 import { siteConfig } from "@/lib/site.config";
 import type { Metadata } from "next";
-
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 
 export const metadata: Metadata = {

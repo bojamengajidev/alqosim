@@ -1,13 +1,5 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
 # dependencies
 /node_modules
-/.pnp
-.pnp.js
-.yarn/install-state.gz
-
-# testing
-/coverage
 
 # next.js
 /.next/
@@ -16,18 +8,16 @@
 # production
 /build
 
-# misc
-.DS_Store
-*.pem
+# testing
+/coverage
 
-# debug
+# logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Ignore all env files
+# env
 .env*
-# But do not ignore .env.example
 !.env.example
 
 # vercel
@@ -35,11 +25,8 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
-next-env.d.ts
 
-.claude
-.factory
-RAILWAY-SETUP.md
-.env*.local
-node_modules
-.env
+# misc
+.DS_Store
+*.pem
+Thumbs.db

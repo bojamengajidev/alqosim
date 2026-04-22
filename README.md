@@ -2,7 +2,6 @@
 
 A modern headless WordPress starter built with Next.js 16, React 19, and TypeScript.
 
-[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/deploy/next-wp?referralCode=AJtQpy&utm_medium=integration&utm_source=template&utm_campaign=generic)
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2F9d8dev%2Fnext-wp&env=WORDPRESS_URL,WORDPRESS_HOSTNAME,WORDPRESS_WEBHOOK_SECRET&envDescription=Add%20WordPress%20URL%20with%20Rest%20API%20enabled%20(ie.%20https%3A%2F%2Fwp.example.com)%2C%20the%20hostname%20for%20Image%20rendering%20in%20Next%20JS%20(ie.%20wp.example.com)%2C%20and%20a%20secret%20key%20for%20secure%20revalidation&project-name=next-wp&repository-name=next-wp&demo-title=Next%20JS%20and%20WordPress%20Starter&demo-url=https%3A%2F%2Fwp.9d8.dev)
 
@@ -14,23 +13,40 @@ A modern headless WordPress starter built with Next.js 16, React 19, and TypeScr
 
 ## Table of Contents
 
-- [Quick Start](#quick-start)
-- [Prerequisites](#prerequisites)
-- [Environment Variables](#environment-variables)
-- [Features](#features)
-- [Project Structure](#project-structure)
-- [Deployment](#deployment)
-  - [Railway (Recommended)](#railway-recommended)
-  - [Vercel](#vercel)
-  - [Local Development](#local-development)
-- [WordPress API Functions](#wordpress-api-functions)
-- [Cache Revalidation](#cache-revalidation)
-- [Customization](#customization)
-- [Troubleshooting](#troubleshooting)
-- [Scripts](#scripts)
-- [Contributing](#contributing)
-- [License](#license)
-- [Credits](#credits)
+- [Next WP](#next-wp)
+  - [Table of Contents](#table-of-contents)
+  - [Quick Start](#quick-start)
+  - [Prerequisites](#prerequisites)
+  - [Environment Variables](#environment-variables)
+  - [Features](#features)
+  - [Project Structure](#project-structure)
+  - [Deployment](#deployment)
+    - [Railway (Recommended)](#railway-recommended)
+      - [What's Included](#whats-included)
+      - [Deployment](#deployment-1)
+      - [Post-Deployment Setup](#post-deployment-setup)
+      - [Customizing the Next.js Code](#customizing-the-nextjs-code)
+    - [Vercel](#vercel)
+    - [Local Development](#local-development)
+  - [WordPress API Functions](#wordpress-api-functions)
+    - [Posts](#posts)
+    - [Taxonomies](#taxonomies)
+    - [Authors \& Pages](#authors--pages)
+    - [Example Usage](#example-usage)
+  - [Cache Revalidation](#cache-revalidation)
+  - [Customization](#customization)
+    - [Site Configuration](#site-configuration)
+    - [Navigation](#navigation)
+    - [Theming](#theming)
+  - [Troubleshooting](#troubleshooting)
+    - [REST API not accessible](#rest-api-not-accessible)
+    - [Images not loading](#images-not-loading)
+    - [Revalidation not working](#revalidation-not-working)
+    - [CORS errors](#cors-errors)
+  - [Scripts](#scripts)
+  - [Contributing](#contributing)
+  - [License](#license)
+  - [Credits](#credits)
 
 ## Quick Start
 

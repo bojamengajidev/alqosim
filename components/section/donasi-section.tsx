@@ -21,7 +21,7 @@ export default function Donasi() {
          
             <Image
                             src="/images/program-wakaf.png"
-                            alt=""
+                            alt="poster program wakaf jariyah"
                             width={360}
                             height={640}
                             loading="lazy"
