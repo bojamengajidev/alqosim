@@ -25,6 +25,7 @@ export default function RootLayout({
       )}>
         {/* client dipisah */}
         {children}
+         <SpeedInsights />
       </body>
     </html>
   );
