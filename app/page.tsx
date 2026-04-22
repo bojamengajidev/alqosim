@@ -12,7 +12,13 @@ import BlogSection from "@/components/masjid/blog-section";
 import SubMedia from "@/components/section/media-section";
 
 
+import type { Metadata } from "next";
 
+export const metadata: Metadata = {
+  title: "Masjid Al Qosim",
+  description:
+    "Website resmi Masjid Al Qosim & Boja Mengaji. Informasi kajian, wakaf, donasi, dan kegiatan umat.",
+};
 
 
 
