@@ -2,7 +2,7 @@
 export const mainMenu = {
   beranda: "/",
   "Tentang Kami": "/pages/tentang-kami",
-  "Info Kajian": "/pages/kajian",
+  "Kegiatan": "/pages/kegiatan",
   blog: "/posts",
 };
 
