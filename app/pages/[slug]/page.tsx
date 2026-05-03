@@ -1,5 +1,5 @@
 import ClientLayout from "@/app/client-layout";
-import { getPageBySlug, getAllPages } from "@/lib/wordpress";
+import { getPageBySlug } from "@/lib/wordpress";
 import { generateContentMetadata, stripHtml } from "@/lib/metadata";
 import { Section, Container, Prose } from "@/components/craft";
 import { notFound } from "next/navigation";
@@ -9,25 +9,15 @@ import type { Metadata } from "next";
 // Revalidate pages every hour
 export const revalidate = 3600;
 
-export async function generateStaticParams() {
-  const pages = await getAllPages();
-
-  return pages.map((page) => ({
-    slug: page.slug,
-  }));
-}
-
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: { slug: string };
 }): Promise<Metadata> {
-  const { slug } = await params;
+  const { slug } = params;
   const page = await getPageBySlug(slug);
 
-  if (!page) {
-    return {};
-  }
+  if (!page) return {};
 
   const description = page.excerpt?.rendered
     ? stripHtml(page.excerpt.rendered)
@@ -44,9 +34,9 @@ export async function generateMetadata({
 export default async function Page({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: { slug: string };
 }) {
-  const { slug } = await params;
+  const { slug } = params;
   const page = await getPageBySlug(slug);
 
   if (!page) {
@@ -56,13 +46,14 @@ export default async function Page({
   return (
     <ClientLayout>
       <Section>
-      <Container>
-        <Prose>
-          <h2>{page.title.rendered}</h2>
-          <div dangerouslySetInnerHTML={{ __html: page.content.rendered }} />
-        </Prose>
-      </Container>
-    </Section>
+        <Container>
+          <Prose>
+            <h2>{page.title.rendered}</h2>
+            <div dangerouslySetInnerHTML={{ __html: page.content.rendered }} />
+          </Prose>
+        </Container>
+      </Section>
     </ClientLayout>
   );
 }
+
