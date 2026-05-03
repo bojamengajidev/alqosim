@@ -6,15 +6,17 @@ import { notFound } from "next/navigation";
 
 import type { Metadata } from "next";
 
-// Revalidate pages every hour
+// ⏱️ Revalidate (ISR) setiap 1 jam
 export const revalidate = 3600;
+
 
 export async function generateMetadata({
   params,
 }: {
   params: { slug: string };
 }): Promise<Metadata> {
-  const { slug } = params;
+  const slug = params.slug;
+
   const page = await getPageBySlug(slug);
 
   if (!page) return {};
@@ -31,13 +33,16 @@ export async function generateMetadata({
   });
 }
 
+// 📄 Render halaman berdasarkan slug
 export default async function Page({
   params,
 }: {
   params: { slug: string };
 }) {
-  const { slug } = params;
+  const slug = params.slug;
+
   const page = await getPageBySlug(slug);
+
 
   if (!page) {
     notFound();
@@ -48,12 +53,16 @@ export default async function Page({
       <Section>
         <Container>
           <Prose>
-            <h2>{page.title.rendered}</h2>
-            <div dangerouslySetInnerHTML={{ __html: page.content.rendered }} />
+            <h1>{page.title.rendered}</h1>
+
+            <div
+              dangerouslySetInnerHTML={{
+                __html: page.content.rendered,
+              }}
+            />
           </Prose>
         </Container>
       </Section>
     </ClientLayout>
   );
 }
-
