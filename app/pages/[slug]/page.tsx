@@ -6,7 +6,7 @@ import { notFound } from "next/navigation";
 
 import type { Metadata } from "next";
 
-// ⏱️ Revalidate (ISR) setiap 1 jam
+//  Revalidate (ISR) setiap 1 jam
 export const revalidate = 3600;
 
 
