@@ -274,16 +274,19 @@ export const getAllPages = () =>
   wpFetchGraceful<Page[]>("/pages", [], { per_page: 100 });
 
 export const getPageBySlug = async (slug: string) => {
-  const pages = await wpFetch<Page[]>(
-    "/pages",
+  const res = await fetch(
+    `${process.env.WORDPRESS_URL}/wp-json/wp/v2/pages?slug=${slug}&_embed=true`,
     {
-      slug,
-      _embed: true,
-    },
-    [`page-${slug}`] // cache per slug
+      cache: "no-store", // 🔥 MATIKAN CACHE
+    }
   );
 
-  return pages[0] || null;
+  if (!res.ok) return null;
+
+  const data = await res.json();
+
+  // filter biar pasti cocok slug
+  return data.find((p: any) => p.slug === slug) || null;
 };
 
 /* ==========================================================================
