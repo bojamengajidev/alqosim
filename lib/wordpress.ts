@@ -273,8 +273,18 @@ export const searchAuthors = (search: string) =>
 export const getAllPages = () =>
   wpFetchGraceful<Page[]>("/pages", [], { per_page: 100 });
 
-export const getPageBySlug = async (slug: string) =>
-  (await wpFetch<Page[]>("/pages", { slug }))[0];
+export const getPageBySlug = async (slug: string) => {
+  const pages = await wpFetch<Page[]>(
+    "/pages",
+    {
+      slug,
+      _embed: true,
+    },
+    [`page-${slug}`] // cache per slug
+  );
+
+  return pages[0] || null;
+};
 
 /* ==========================================================================
    MEDIA
