@@ -3,21 +3,20 @@ import { getPageBySlug } from "@/lib/wordpress";
 import { Section, Container, Prose } from "@/components/craft";
 import { notFound } from "next/navigation";
 
-// ⏱️ ISR (cache 1 jam)
-export const revalidate = 120;
+// matikan cache dulu biar aman
+export const revalidate = 0;
 
 export default async function Page({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const slug = params.slug;
+  // ✅ WAJIB di-await
+  const { slug } = await params;
 
-  // ambil data dari WordPress berdasarkan slug
   const page = await getPageBySlug(slug);
 
-  // kalau tidak ada → 404
-  if (!page || !page.content) {
+  if (!page) {
     notFound();
   }
 
@@ -26,10 +25,8 @@ export default async function Page({
       <Section>
         <Container>
           <Prose>
-            {/* Judul halaman */}
             <h1>{page.title?.rendered}</h1>
 
-            {/* Konten dari WordPress */}
             <div
               dangerouslySetInnerHTML={{
                 __html: page.content?.rendered || "",
