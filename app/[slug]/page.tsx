@@ -4,7 +4,7 @@ import { Section, Container, Prose } from "@/components/craft";
 import { notFound } from "next/navigation";
 
 // ⏱️ ISR (cache 1 jam)
-export const revalidate = 3600;
+export const revalidate = 120;
 
 export default async function Page({
   params,
