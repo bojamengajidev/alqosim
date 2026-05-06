@@ -38,7 +38,7 @@ export default function Hero() {
           </p>
 
           <Link
-            href="/pages/tentang-kami"
+            href="/tentang-kami"
             className="
               inline-flex items-center gap-2
               rounded-full
