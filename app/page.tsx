@@ -10,6 +10,7 @@ import FeatureSection from "@/components/masjid/feature-section";
 
 import BlogSection from "@/components/masjid/blog-section";
 import SubMedia from "@/components/section/media-section";
+import CustomTabs from "@/components/donasi/tab-donasi";
 
 export const metadata: Metadata = {
   title: "Masjid Muhammad Al Qosim",
@@ -43,6 +44,7 @@ export default function Home() {
 
     <section>
       <Donasi />
+     
     </section>
 
   </main>

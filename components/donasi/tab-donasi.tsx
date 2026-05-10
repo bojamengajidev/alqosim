@@ -11,23 +11,14 @@ import {
 } from "@/components/ui/tabs"
 
 
-export default function DonasiCard() {
+export default function CustomTabs() {
   return (
-    <div className="w-full max-w-xl mx-auto bg-white rounded-2xl shadow-lg overflow-hidden">
-      
- 
-
-      {/* TABS */}
-      <div className="flex border-b text-xl py-2">
-        <Tab active>DONASI ONLINE</Tab>
-      </div>
-
-        <div className="flex justify-center py-4">
+    <div className="flex justify-center py-10">
       <Tabs
         defaultValue="transfer"
         className="w-full max-w-md"
       >
-        <TabsList className="grid w-full grid-cols-2 bg-whitep-1 border rounded-2xl">
+        <TabsList className="grid w-full grid-cols-2 bg-white shadow-xl p-1 rounded-2xl">
           <TabsTrigger
             value="transfer"
             className="
@@ -64,8 +55,19 @@ export default function DonasiCard() {
         </TabsList>
 
         <TabsContent
-          value="transfer">
-        <div className="p-2 space-y-4">
+          value="transfer"
+          className="
+            mt-6
+            rounded-2xl
+            border
+            border-gray-200
+            bg-white
+            p-6
+            shadow-xl
+          "
+        >
+           <div className="p-6 space-y-4">
+        <h3 className="font-semibold text-gray-800">Transfer Manual</h3>
 
         <p className="text-sm text-gray-500">
           Silakan transfer ke salah satu rekening berikut.
@@ -73,7 +75,7 @@ export default function DonasiCard() {
         </p>
 
         {/* BANK LIST */}
-        <div className="space-y-4">
+        <div className="space-y-5">
           {bankList.map((bank) => (
             <BankItem key={bank.id} bank={bank} />
           ))}
@@ -82,10 +84,10 @@ export default function DonasiCard() {
         {/* INFO */}
         <div className="rounded-xl bg-yellow-50 border border-yellow-100 py-4  p-4 text-sm text-gray-700">
           <p className="font-semibold mb-2">  ⚠️ <strong>Perhatian</strong></p>
-          <p className="text-justify wrap-normal"> Setelah melakukan donasi, dimohon untuk melakukan konfirmasi dengan mengirim bukti transfer melalui WhatsApp Admin.
+          <p className="text-justify wrap-normal"> Setelah melakukan transfer, dimohon untuk melakukan konfirmasi dengan mengirim bukti transfer melalui WhatsApp Admin.
           </p>
        </div>
-        <div className="py-2">
+        <div className="py-5">
            <Link
               href="https://api.whatsapp.com/send/?phone=6285156245768&text&type=phone_number&app_absent=0"
               className="
@@ -112,43 +114,26 @@ export default function DonasiCard() {
         </TabsContent>
 
         <TabsContent
-          value="qris">
-        <div className="flex justify-center items-center">
+          value="qris"
+          className="
+            mt-6
+            rounded-2xl
+            border
+            border-gray-200
+            bg-white
+            p-6
+            shadow-xl
+          "
+        >
+          <h2 className="text-xl font-bold mb-2">
+            qris Settings
+          </h2>
 
-        <Image
-                src="/images/qris.png"
-                alt="metode pembayaran qris"
-                width={320}
-                height={640}
-                priority
-              
-              /> 
-      </div>
-
-      <div className="p-8 space-y-4 ">
-         <p>Gunakan aplikasi E-Wallet atau Mobile Banking apa saja untuk memindai QRIS di atas.</p>
-      </div>
+          <p>
+            Change your qris here.
+          </p>
         </TabsContent>
       </Tabs>
     </div>
-    </div>
-  );
-}
-
-function Tab({
-  children,
-  active,
-}: {
-  children: React.ReactNode;
-  active?: boolean;
-}) {
-  return (
-    <button
-      className={`flex-1 py-3 font-semibold ${
-        active
-      }`}
-    >
-      {children}
-    </button>
-  );
+  )
 }
