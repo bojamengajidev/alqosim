@@ -22,12 +22,12 @@ export default function DonasiCard() {
         <Tab active>DONASI ONLINE</Tab>
       </div>
 
-        <div className="flex justify-center py-4">
+      <div className="flex justify-center">
       <Tabs
         defaultValue="transfer"
         className="w-full max-w-md"
       >
-        <TabsList className="grid w-full grid-cols-2 bg-whitep-1 border rounded-2xl">
+        <TabsList className="grid w-full grid-cols-2 mt-4 bg-white rounded-2xl">
           <TabsTrigger
             value="transfer"
             className="
@@ -65,11 +65,11 @@ export default function DonasiCard() {
 
         <TabsContent
           value="transfer">
-        <div className="p-2 space-y-4">
+
+        <div className="space-y-4 sm: p-4">
 
         <p className="text-sm text-gray-500">
           Silakan transfer ke salah satu rekening berikut.
-          
         </p>
 
         {/* BANK LIST */}
