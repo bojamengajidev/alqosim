@@ -19,7 +19,7 @@ export function QuotesRotator() {
   return (
     <section
       className="
-        bg-slate-100 dark:bg-slate-950
+        bg-amber-50 dark:bg-slate-950
         border-l-4 border-lime-400
         rounded-xl
         px-6 py-5
@@ -30,7 +30,7 @@ export function QuotesRotator() {
         duration-500
       "
     >
-      <p className="text-sm italic text-slate-500 mb-4">
+      <p className="text-sm italic text-slate-700 mb-4">
         {quote.source}
       </p>
 
