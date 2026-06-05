@@ -68,9 +68,9 @@ export default function BlogSection() {
                 <item.icon className="h-6 w-6" />
               </div>
 
-              <h3 className="font-semibold text-lg">
+              <h1 className="font-semibold text-lg">
                 {item.title}
-              </h3>
+              </h1>
 
               <p className="text-sm text-muted-foreground">
                 {item.desc}
