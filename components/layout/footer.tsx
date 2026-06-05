@@ -15,7 +15,7 @@ export default function Footer() {
         <Container className="grid md:grid-cols-[1.5fr_0.5fr_0.5fr] gap-12">
           <div className="flex flex-col gap-6 not-prose">
             <Link href="/" className="flex items-center gap-3">
-              <h3 className="sr-only">{siteConfig.site_name}</h3>
+              <h1 className="sr-only">{siteConfig.site_name}</h1>
            
              <Image
               src={YKBM}
@@ -46,7 +46,7 @@ export default function Footer() {
             <p className="dark:invert">{siteConfig.site_description}</p>
           </div>
           <div className="flex flex-col gap-2 text-sm">
-            <h5 className="font-medium text-base dark:invert">Website</h5>
+            <h2 className="font-medium text-base dark:invert">Website</h2>
             {Object.entries(mainMenu).map(([key, href]) => (
               <Link
                 className="hover:underline underline-offset-4 dark:invert"
@@ -58,7 +58,7 @@ export default function Footer() {
             ))}
           </div>
           <div className="flex flex-col gap-2 text-sm">
-            <h5 className="font-medium text-base dark:invert">Blog</h5>
+            <h3 className="font-medium text-base dark:invert">Blog</h3>
             {Object.entries(contentMenu).map(([key, href]) => (
               <Link
                 className="hover:underline underline-offset-4 dark:invert"
