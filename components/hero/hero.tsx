@@ -10,6 +10,7 @@ export default function Hero() {
         src="/images/drone-2.webp"
         alt="Foto Masjid Muhammad Al Qosim diambil dari udara"
         fill
+        priority
         sizes="100vw"
         className="object-cover"
       />
