@@ -7,10 +7,9 @@ export default function Hero() {
 
       {/* BACKGROUND IMAGE */}
       <Image
-        src="/images/img-drone.webp"
+        src="/images/drone-2.webp"
         alt="Foto Masjid Muhammad Al Qosim diambil dari udara"
         fill
-        priority
         sizes="100vw"
         className="object-cover"
       />
@@ -45,7 +44,6 @@ export default function Hero() {
               bg-[#d97400]
               px-6 py-3
               text-sm font-medium
-              text-white
               transition
               hover:scale-105
               hover:shadow-xl
