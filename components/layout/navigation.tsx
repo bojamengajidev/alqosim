@@ -41,7 +41,7 @@ export default function Navigation({ className, children, id }: NavProps) {
          
              <Image
               src={YKBM}
-              alt="Yayasan Kajian Boja Mengaji"
+              alt="logo yayasan boja mengaji"
               width={48}
               height={48}
               className="w-13 h-auto"
@@ -50,7 +50,7 @@ export default function Navigation({ className, children, id }: NavProps) {
 
                <Image
               src={Logo}
-              alt="Logo"
+              alt="Logo  boja mengaji"
               width={56}
               height={56}
               className="w-18 h-auto"
@@ -58,7 +58,7 @@ export default function Navigation({ className, children, id }: NavProps) {
 
             <Image
               src={Alqosim}
-              alt="Masjid Muhammad Al Qosim"
+              alt="logo masjid alqosim"
               width={36}
               height={36}
               className="w-auto h-12"
