@@ -33,7 +33,7 @@ export default function ProgramsSection() {
   return (
     <Section>
       <Container>
-        <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+        {/* <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center"> */}
           <div>
             <SectionHeader
               eyebrow="Boja Mengaji"
@@ -66,7 +66,7 @@ export default function ProgramsSection() {
           </div>
 
          
-        </div>
+        {/* </div> */}
       </Container>
     </Section>
   );

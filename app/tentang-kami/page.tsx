@@ -44,12 +44,12 @@ const profileItems = [
   {
     icon: CalendarDays,
     label: "Tahun Berdiri",
-    value: "2009",
+    value: "2026",
   },
   {
     icon: Users,
-    label: "Kapasitas",
-    value: "± 1.000 jamaah",
+    label: "Luas Lahan",
+    value: "± 1.000 m²",
   },
   {
     icon: BookOpen,
@@ -81,7 +81,7 @@ const timeline = [
     year: "Pembangunan Masjid",
     title: "Inisiatif Pembangunan",
     description:
-      "Pemba angunan fisik Masjid Muhammad Al Qosim dilaksanakan secara bertahap hingga siap digunakan.",
+      "Pembangunan fisik Masjid Muhammad Al Qosim dilaksanakan secara bertahap hingga siap digunakan.",
   },
   {
     year: "Operasional",
