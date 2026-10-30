@@ -45,7 +45,7 @@ export default function ProgramsSection() {
               {features.map((feature) => (
                 <Card
                   key={feature.title}
-                  className="group border-border/60 shadow-none transition-colors hover:border-primary/30 hover:bg-primary/[0.03]"
+                  className="group border-border/60 shadow-none transition-colors hover:border-primary/30 hover:bg-primary/3"
                 >
                   <CardContent className="flex gap-4 p-5">
                     <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
@@ -65,7 +65,7 @@ export default function ProgramsSection() {
             </div>
           </div>
 
-          <BlogCard />
+         
         </div>
       </Container>
     </Section>
