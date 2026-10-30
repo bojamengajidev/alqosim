@@ -29,23 +29,41 @@ export default function Footer() {
                   <Image
                     src={Alqosim}
                     alt="Logo Masjid Muhammad Al Qosim"
+<<<<<<< HEAD
                     width={44}
                     height={44}
                     className="h-11 w-11 object-contain"
+=======
+                    width={96}
+                height={96}
+                className="w-12 h-auto"
+>>>>>>> eaf68a3 (update:component ui)
                   />
                   <Image
                     src={YKBM}
                     alt="Logo Yayasan Kajian Boja Mengaji"
+<<<<<<< HEAD
                     width={44}
                     height={44}
                     className="h-11 w-11 object-contain"
+=======
+                    width={96}
+                height={96}
+                className="w-16 h-auto"
+>>>>>>> eaf68a3 (update:component ui)
                   />
                   <Image
                     src={Logo}
                     alt="Logo Boja Mengaji"
+<<<<<<< HEAD
                     width={44}
                     height={44}
                     className="h-11 w-11 object-contain"
+=======
+                   width={96}
+                height={96}
+                className="w-20 h-auto"
+>>>>>>> eaf68a3 (update:component ui)
                   />
                 </span>
               </Link>
@@ -104,7 +122,11 @@ export default function Footer() {
             </p>
             <div className="flex items-center gap-3">
               <span className="text-xs text-muted-foreground">
+<<<<<<< HEAD
                 Boja Mengaji
+=======
+                Dikembangkan Oleh AHSAN CREATIVE
+>>>>>>> eaf68a3 (update:component ui)
               </span>
             </div>
           </div>

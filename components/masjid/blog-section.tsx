@@ -15,7 +15,11 @@ const features = [
   {
     icon: GraduationCap,
     title: "Pendidikan",
+<<<<<<< HEAD
     description: "Sekolah TK & SD Islam dengan kurikulum yang terarah.",
+=======
+    description: "Lembaga Pendidikan Islam dengan kurikulum yang terarah.",
+>>>>>>> eaf68a3 (update:component ui)
   },
   {
     icon: Users,
