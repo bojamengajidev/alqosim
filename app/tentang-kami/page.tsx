@@ -8,7 +8,7 @@ import {
   MapPin,
   MessageCircle,
   Users,
-  Youtube,
+
 } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
@@ -347,7 +347,7 @@ export default function AboutPage() {
                 WhatsApp Admin
               </span>
               <span className="inline-flex items-center gap-1.5">
-                <Youtube className="size-3.5 text-primary" />
+                
                 YouTube Boja Mengaji
               </span>
             </div>
