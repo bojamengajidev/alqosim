@@ -7,9 +7,15 @@ import { Button } from "@/components/ui/button";
 
 export default function Hero() {
   return (
+<<<<<<< HEAD
     <section className="relative isolate flex min-h-[calc(100svh-4rem)] items-end overflow-hidden">
       <Image
         src="/images/drone-2.webp"
+=======
+    <section className="relative isolate flex min-h-[calc(100svh-1rem)] items-end overflow-hidden">
+      <Image
+        src="/images/viewdrone-2.webp"
+>>>>>>> eaf68a3 (update:component ui)
         alt="Foto Masjid Muhammad Al Qosim diambil dari udara"
         fill
         priority
@@ -20,7 +26,11 @@ export default function Hero() {
       <div className="absolute inset-0 bg-linear-to-b from-black/55 via-black/35 to-black/85" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(0,0,0,0.35)_100%)]" />
 
+<<<<<<< HEAD
       <div className="container relative z-10 pb-20 pt-32 sm:pb-24 lg:pb-28">
+=======
+      <div className="container relative z-10 pb-20 pt-32 sm:pb-24 lg:pb-42">
+>>>>>>> eaf68a3 (update:component ui)
         <div className="max-w-3xl">
           <Badge
             variant="outline"
@@ -30,7 +40,11 @@ export default function Hero() {
             Masjid Muhammad Al Qosim · Boja
           </Badge>
 
+<<<<<<< HEAD
           <h1 className="text-balance text-4xl font-semibold leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-6xl">
+=======
+          <h1 className="text-balance text-4xl leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-6xl">
+>>>>>>> eaf68a3 (update:component ui)
             Menebarkan Sunnah Rasulullah ﷺ, Membangun Umat
           </h1>
 

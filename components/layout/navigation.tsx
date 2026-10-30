@@ -45,32 +45,57 @@ export default function Navigation({ className, children, id }: NavProps) {
               <Image
                 src={Alqosim}
                 alt="Logo Masjid Muhammad Al Qosim"
+<<<<<<< HEAD
                 width={44}
                 height={44}
                 className="h-11 w-11 object-contain"
+=======
+                width={96}
+                height={96}
+                className="w-9 h-auto"
+>>>>>>> eaf68a3 (update:component ui)
               />
               <Image
                 src={YKBM}
                 alt="Logo Yayasan Kajian Boja Mengaji"
+<<<<<<< HEAD
                 width={44}
                 height={44}
                 className="hidden h-11 w-11 object-contain sm:block"
+=======
+                width={96}
+                height={96}
+                className="w-12 h-auto"
+>>>>>>> eaf68a3 (update:component ui)
               />
               <Image
                 src={Logo}
                 alt="Logo Boja Mengaji"
+<<<<<<< HEAD
                 width={44}
                 height={44}
                 className="hidden h-11 w-11 object-contain lg:block"
+=======
+                width={96}
+                height={96}
+                className="w-14 h-auto"
+>>>>>>> eaf68a3 (update:component ui)
               />
             </span>
 
             <span className="min-w-0 leading-tight">
               <span className="block truncate text-sm font-semibold tracking-tight text-foreground">
+<<<<<<< HEAD
                 Masjid Muhammad
               </span>
               <span className="block truncate text-xs text-muted-foreground">
                 Al Qosim · Boja Mengaji
+=======
+                Masjid Muhammad Al Qosim
+              </span>
+              <span className="block truncate text-xs text-muted-foreground">
+                Yayasan Kajian Boja Mengaji
+>>>>>>> eaf68a3 (update:component ui)
               </span>
             </span>
           </Link>

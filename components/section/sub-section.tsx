@@ -28,8 +28,13 @@ export default function CalendarAndHadith() {
           <div>
             <SectionHeader
               eyebrow="Kutipan Hadits"
+<<<<<<< HEAD
               title="Pengingat dari Sunnah"
               description="Hadits-hadits shahih pilihan sebagai pengingat jiwa, semoga kita mudah meneladani Rasulullah ﷺ."
+=======
+              title="Kumpulan Hadits Pilihan"
+              description="Sesungguhnya sebaik-baik perkataan adalah Kitabullah (Al-Qur'an) dan sebaik-baik petunjuk adalah petunjuk Muhammad shallallahu 'alaihi wa sallam."
+>>>>>>> eaf68a3 (update:component ui)
             />
 
             <div className="mt-6">

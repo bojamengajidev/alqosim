@@ -32,7 +32,11 @@ const intro = {
   title: "Masjid Muhammad Al Qosim",
   subtitle: "Boja Mengaji",
   paragraph:
+<<<<<<< HEAD
     "Masjid Muhammad Al Qosim — yang dikenal luas sebagai Boja Mengaji — adalah rumah ibadah, pusat dakwah, dan pendidikan bagi umat di Boja, Kendal, Jawa Tengah. Kami hadir sebagai ruang lahirnya semangat Al-Qur'an dan Sunnah, tempat nilai-nilai agama diterjemahkan menjadi kehidupan bermakna bagi umat.",
+=======
+    "Masjid Muhammad Al Qosim adalah Tempat ibadah, pusat dakwah, dan pendidikan bagi umat di Boja, Kendal, Jawa Tengah. Kami hadir sebagai ruang lahirnya semangat Al-Qur'an dan Sunnah, tempat nilai-nilai agama diterjemahkan menjadi kehidupan bermakna bagi umat.",
+>>>>>>> eaf68a3 (update:component ui)
 };
 
 const profileItems = [
