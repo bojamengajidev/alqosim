@@ -17,7 +17,7 @@ export default function Hero() {
         className="object-cover"
       />
 
-      <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/35 to-black/85" />
+      <div className="absolute inset-0 bg-linear-to-b from-black/55 via-black/35 to-black/85" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(0,0,0,0.35)_100%)]" />
 
       <div className="container relative z-10 pb-20 pt-32 sm:pb-24 lg:pb-28">
