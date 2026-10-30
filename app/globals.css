@@ -1,97 +1,106 @@
-
-
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
-
 @custom-variant dark (&:is(.dark *));
 
-@utility container {
-    margin-inline: auto;
-    padding-inline: 2rem;
-    @media (width >= theme(--breakpoint-sm)) {
-        max-width: none;
-    }
-    @media (width >= 1400px) {
-        max-width: 1400px;
-    }
-}
-
-
 @theme {
-    --font-sans:
-        var(--font-sans);
-    --font-body: var(--font-body);
-    --font-title: var(--font-title);
+  --font-sans: var(--font-jakarta);
+  --font-display: var(--font-lora);
+  --font-arabic: var(--font-amiri);
 
-    --color-border: hsl(var(--border));
-    --color-input: hsl(var(--input));
-    --color-ring: hsl(var(--ring));
-    --color-background: hsl(var(--background));
-    --color-foreground: hsl(var(--foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
 
-    --color-primary: hsl(var(--primary));
-    --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
 
-    --color-secondary: hsl(var(--secondary));
-    --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
 
-    --color-destructive: hsl(var(--destructive));
-    --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
 
-    --color-muted: hsl(var(--muted));
-    --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
 
-    --color-accent: hsl(var(--accent));
-    --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
 
-    --color-popover: hsl(var(--popover));
-    --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
 
-    --color-card: hsl(var(--card));
-    --color-card-foreground: hsl(var(--card-foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
 
-    --radius-lg: var(--radius);
-    --radius-md: calc(var(--radius) - 2px);
-    --radius-sm: calc(var(--radius) - 4px);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
 
-    --animate-accordion-down: accordion-down 0.2s ease-out;
-    --animate-accordion-up: accordion-up 0.2s ease-out;
+  --shadow-soft: 0 1px 2px rgb(28 38 33 / 0.04), 0 12px 32px -18px rgb(11 79 60 / 0.2);
+  --shadow-card: 0 1px 2px rgb(28 38 33 / 0.04), 0 8px 24px -16px rgb(28 38 33 / 0.16);
 
-    @keyframes accordion-down {
-        from {
-            height: 0;
-        }
-        to {
-            height: var(--radix-accordion-content-height);
-        }
+  --animate-fade-up: fade-up 0.6s ease-out both;
+  --animate-fade-in: fade-in 0.5s ease-out both;
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
     }
-    @keyframes accordion-up {
-        from {
-            height: var(--radix-accordion-content-height);
-        }
-        to {
-            height: 0;
-        }
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
 }
 
-/*
-  The default border color has changed to `currentcolor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
+@utility container {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 80rem;
+  padding-inline: 1rem;
 
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
-@layer base {
-    *,
-    ::after,
-    ::before,
-    ::backdrop,
-    ::file-selector-button {
-        border-color: var(--color-gray-200, currentcolor);
-    }
+  @media (width >= 640px) {
+    padding-inline: 1.5rem;
+  }
+
+  @media (width >= 1024px) {
+    padding-inline: 2rem;
+  }
 }
 
 @utility no-scrollbar {
@@ -103,122 +112,145 @@
 }
 
 @layer base {
-    :root {
-        --background: 0 0% 100%;
-        --foreground: 0 0% 3.9%;
+  :root {
+    --background: 43 54% 97%;
+    --foreground: 150 15% 13%;
 
-        --card: 0 0% 100%;
-        --card-foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 150 15% 13%;
 
-        --popover: 0 0% 100%;
-        --popover-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 150 15% 13%;
 
-        --primary: 0 0% 9%;
-        --primary-foreground: 0 0% 98%;
+    --primary: 163 76% 18%;
+    --primary-foreground: 42 62% 96%;
 
-        --secondary: 0 0% 96.1%;
-        --secondary-foreground: 0 0% 9%;
+    --secondary: 38 47% 90%;
+    --secondary-foreground: 27 23% 18%;
 
-        --muted: 0 0% 96.1%;
-        --muted-foreground: 0 0% 45.1%;
+    --muted: 39 37% 93%;
+    --muted-foreground: 33 9% 40%;
 
-        --accent: 0 0% 96.1%;
-        --accent-foreground: 0 0% 9%;
+    --accent: 39 48% 57%;
+    --accent-foreground: 34 33% 12%;
 
-        --destructive: 0 84.2% 60.2%;
-        --destructive-foreground: 0 0% 98%;
+    --destructive: 5 59% 44%;
+    --destructive-foreground: 42 62% 96%;
 
-        --border: 0 0% 89.8%;
-        --input: 0 0% 89.8%;
-        --ring: 0 0% 3.9%;
+    --border: 37 29% 86%;
+    --input: 37 29% 86%;
+    --ring: 163 76% 18%;
 
-        --radius: 0.5rem;
-    }
+    --radius: 0.75rem;
+  }
 
-    .dark {
-        --background: 0 0% 3.9%;
-        --foreground: 0 0% 98%;
+  .dark {
+    --background: 154 20% 7%;
+    --foreground: 39 39% 93%;
 
-        --card: 0 0% 3.9%;
-        --card-foreground: 0 0% 98%;
+    --card: 153 18% 10%;
+    --card-foreground: 39 39% 93%;
 
-        --popover: 0 0% 3.9%;
-        --popover-foreground: 0 0% 98%;
+    --popover: 153 18% 10%;
+    --popover-foreground: 39 39% 93%;
 
-        --primary: 0 0% 98%;
-        --primary-foreground: 0 0% 9%;
+    --primary: 154 38% 50%;
+    --primary-foreground: 153 36% 5%;
 
-        --secondary: 0 0% 14.9%;
-        --secondary-foreground: 0 0% 98%;
+    --secondary: 150 17% 14%;
+    --secondary-foreground: 39 39% 93%;
 
-        --muted: 0 0% 14.9%;
-        --muted-foreground: 0 0% 63.9%;
+    --muted: 150 16% 12%;
+    --muted-foreground: 35 10% 63%;
 
-        --accent: 0 0% 14.9%;
-        --accent-foreground: 0 0% 98%;
+    --accent: 40 55% 62%;
+    --accent-foreground: 36 41% 7%;
 
-        --destructive: 0 62.8% 30.6%;
-        --destructive-foreground: 0 0% 98%;
+    --destructive: 5 58% 32%;
+    --destructive-foreground: 39 39% 93%;
 
-        --border: 0 0% 14.9%;
-        --input: 0 0% 14.9%;
-        --ring: 0 0% 83.1%;
-    }
-}
+    --border: 147 12% 19%;
+    --input: 147 12% 19%;
+    --ring: 154 38% 50%;
+  }
 
-@layer base {
-    * {
-        @apply border-border;
-    }
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: hsl(var(--border));
+  }
 
-    body {
-        @apply bg-background text-foreground;
-    }
-}
+  html {
+    scroll-behavior: smooth;
+  }
 
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-.no-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-@layer base {
   body {
-    @apply font-body text-neutral-800;
+    @apply bg-background font-sans text-foreground antialiased;
+    text-rendering: optimizeLegibility;
   }
 
-   body {
-    font-family: var(--font-sans);
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display tracking-tight text-balance;
   }
 
-  h1 {
-    font-family: var(--font-sans); /* default h1 = Inter */
+  p {
+    @apply text-pretty;
   }
 
-  .hero-title {
-    font-family: var(--font-serif); /* hero h1 = Lora */
-  }
-  h2, h3, h4 {
-    @apply font-sans;
+  ::selection {
+    background: hsl(var(--primary) / 0.16);
   }
 
+  :focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+  }
 }
 
+/* Keep prose tokens unlayered so they win over the typography plugin defaults. */
+.prose {
+  --tw-prose-body: hsl(var(--foreground) / 0.86);
+  --tw-prose-headings: hsl(var(--foreground));
+  --tw-prose-links: hsl(var(--primary));
+  --tw-prose-bold: hsl(var(--foreground));
+  --tw-prose-counters: hsl(var(--muted-foreground));
+  --tw-prose-bullets: hsl(var(--primary) / 0.6);
+  --tw-prose-quotes: hsl(var(--foreground));
+  --tw-prose-quote-borders: hsl(var(--primary) / 0.3);
+  --tw-prose-captions: hsl(var(--muted-foreground));
+  --tw-prose-code: hsl(var(--foreground));
+  --tw-prose-pre-code: hsl(var(--foreground));
+  --tw-prose-pre-bg: hsl(var(--muted));
+  --tw-prose-th-borders: hsl(var(--border));
+  --tw-prose-td-borders: hsl(var(--border));
+}
 
+.prose :where(h1, h2, h3, h4):not(:where([class~="not-prose"] *)) {
+  font-family: var(--font-lora);
+}
 
-
+.prose :where(a):not(:where([class~="not-prose"] *)) {
+  text-underline-offset: 4px;
+}
 
 .video-frame {
-  border-radius: 20px;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
+  border-radius: 1rem;
+  background: hsl(var(--muted));
 }
 
-/* paksa semua isi lite-youtube ikut radius */
 .video-frame lite-youtube,
 .video-frame reveal,
 .video-frame iframe,
 .video-frame img {
-  border-radius: 20px !important;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem !important;
 }

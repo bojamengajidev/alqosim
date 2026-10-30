@@ -1,19 +1,38 @@
-import ClientLayout from "@/app/client-layout";
-import { getPageBySlug } from "@/lib/wordpress";
-import { Section, Container, Prose } from "@/components/craft";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-// matikan cache dulu biar aman
-export const revalidate = 0;
+import BackButton from "@/components/back";
+import { Article, Container, Section } from "@/components/craft";
+
+import { stripHtml } from "@/lib/metadata";
+import { getPageBySlug } from "@/lib/wordpress";
+
+export const revalidate = 3600;
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const page = await getPageBySlug(slug);
+
+  if (!page) {
+    return {};
+  }
+
+  return {
+    title: stripHtml(page.title.rendered),
+    description: stripHtml(page.excerpt?.rendered || ""),
+  };
+}
 
 export default async function Page({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  // ✅ WAJIB di-await
   const { slug } = await params;
-
   const page = await getPageBySlug(slug);
 
   if (!page) {
@@ -21,20 +40,31 @@ export default async function Page({
   }
 
   return (
-    <ClientLayout>
-      <Section>
-        <Container>
-          <Prose>
-            <h1>{page.title?.rendered}</h1>
+    <Section>
+      <Container>
+        <div className="mx-auto flex max-w-3xl flex-col gap-6">
+          <BackButton />
 
-            <div
-              dangerouslySetInnerHTML={{
-                __html: page.content?.rendered || "",
-              }}
+          <header className="flex flex-col gap-3 border-b border-border/60 pb-6">
+            <h1
+              className="text-3xl font-semibold leading-tight tracking-tight text-foreground sm:text-4xl"
+              dangerouslySetInnerHTML={{ __html: page.title?.rendered || "" }}
             />
-          </Prose>
-        </Container>
-      </Section>
-    </ClientLayout>
+            {page.excerpt?.rendered ? (
+              <p className="text-base leading-relaxed text-muted-foreground">
+                {stripHtml(page.excerpt.rendered)}
+              </p>
+            ) : null}
+          </header>
+
+          <Article
+            className="prose max-w-none"
+            dangerouslySetInnerHTML={{
+              __html: page.content?.rendered || "",
+            }}
+          />
+        </div>
+      </Container>
+    </Section>
   );
 }

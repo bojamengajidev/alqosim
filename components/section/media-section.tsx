@@ -1,44 +1,43 @@
-import YouTubeLite from "../stream/youtube-embeded";
 import Link from "next/link";
+import { Youtube } from "lucide-react";
 
+import { Container, Section } from "@/components/craft";
+import { SectionHeader } from "@/components/shared/section-header";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 
-export default function SubMedia() {
+import YouTubeLite from "../stream/youtube-embeded";
+
+export default function MediaSection() {
   return (
-    <section>
+    <Section>
+      <Container>
+        <SectionHeader
+          align="center"
+          eyebrow="Media"
+          title="Taman-taman surga"
+          description="Ikuti channel kami untuk mendapatkan pembaruan konten kajian rutin dan siaran langsung dari Boja Mengaji."
+        />
 
-    <div className="mb-20">
-        <h1 className="font-bold text-2xl mb-10 text-center md:text-lg lg:text-3xl">
-         Taman - taman Surga
-        </h1>
-        <div className=" container mx-auto mb-10 md:w-xl lg:w-3xl">
-            <YouTubeLite videoId="p1-OzHaN3gU"/>
-        </div>     
-        
-        <p className="font-caption mb-2 max-w-prose mx-auto text-center md:text-sm lg:text-lg">
-        Ikuti channel kami untuk mendapatkan pembaruan konten kajian rutin dan siaran langsung dari Boja Mengaji.</p>
-        
-        <div className="flex justify-center mb-10">
-           <Link
+        <Card className="mx-auto mt-10 max-w-4xl overflow-hidden border-border/60 p-0 shadow-soft">
+          <CardContent className="p-0">
+            <YouTubeLite videoId="p1-OzHaN3gU" />
+          </CardContent>
+        </Card>
+
+        <div className="mt-8 flex justify-center">
+          <Button asChild className="rounded-full">
+            <Link
               href="https://www.youtube.com/@bojamengaji"
-              className="
-                inline-flex items-center gap-2
-                rounded-full
-                bg-[#ff0000]
-                px-5 py-3
-                text-xs text-white"
+              target="_blank"
+              rel="noreferrer"
             >
-            
-              ▶ Subscribe
+              <Youtube className="size-4" />
+              Subscribe Boja Mengaji
             </Link>
+          </Button>
         </div>
-        
-     </div>
-     
-    </section>
+      </Container>
+    </Section>
   );
 }
-
-
-
-
- 

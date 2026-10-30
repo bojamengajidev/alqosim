@@ -1,58 +1,35 @@
-import ClientLayout from "./client-layout";
 import type { Metadata } from "next";
-import SubHeader from "@/components/section/sub-section";
-import SubAmalan from "@/components/section/amalan-section";
+
 import Hero from "@/components/hero/hero";
-import Donasi from "@/components/section/donasi-section";
-
-
-import FeatureSection from "@/components/masjid/feature-section";
-
-import BlogSection from "@/components/masjid/blog-section";
-import SubMedia from "@/components/section/media-section";
-import CustomTabs from "@/components/donasi/tab-donasi";
+import QuickInfo from "@/components/section/quick-info";
+import ProgramsSection from "@/components/masjid/blog-section";
+import CalendarAndHadith from "@/components/section/sub-section";
+import AmalanSection from "@/components/masjid/feature-section";
+import MediaSection from "@/components/section/media-section";
+import DonasiSection from "@/components/section/donasi-section";
+import ArticlesSection from "@/components/section/articles-section";
+import ClosingHadith from "@/components/section/amalan-section";
 
 export const metadata: Metadata = {
-  title: "Masjid Muhammad Al Qosim",
+  title: { absolute: "Masjid Muhammad Al Qosim | Boja Mengaji" },
   description:
     "Masjid Muhammad Al Qosim di Kecamatan Boja sebagai pusat dakwah dan pendidikan Islam.",
 };
 
-// This page is using the craft.tsx component and design system
+export const revalidate = 3600;
+
 export default function Home() {
-   
-
   return (
-
-    <ClientLayout>
-  <main>
-
-    <header>
+    <>
       <Hero />
-    </header>
-
-    <section className="px-0 sm:px-10 md:px-10 lg:px-20">
-      <SubHeader />
-      <FeatureSection />
-      <BlogSection />
-      <SubMedia />
-    </section>
-
-    <section>
-      <SubAmalan />
-    </section>
-
-    <section>
-      <Donasi />
-     
-    </section>
-
-  </main>
-</ClientLayout>
+      <QuickInfo />
+      <ProgramsSection />
+      <CalendarAndHadith />
+      <AmalanSection />
+      <MediaSection />
+      <DonasiSection />
+      <ArticlesSection />
+      <ClosingHadith />
+    </>
   );
-
-  
 }
-
-
-

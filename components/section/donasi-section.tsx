@@ -1,42 +1,38 @@
-import DonasiCard from "@/components/donasi/donasi-card";
 import Image from "next/image";
 
+import { Container, Section } from "@/components/craft";
+import { SectionHeader } from "@/components/shared/section-header";
+import { Card } from "@/components/ui/card";
 
+import DonasiCard from "@/components/donasi/donasi-card";
 
-export default function Donasi() {
+export default function DonasiSection() {
   return (
-    <main className=" bg-amber-200 py-20 px-5">
+    <Section className="bg-secondary/40">
+      <Container>
+        <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+          <div>
+            <SectionHeader
+              eyebrow="Donasi"
+              title="Sudah persiapkan investasi akhirat Anda hari ini?"
+              description="Mari salurkan kebaikan dengan infaq terbaik hari ini. Setiap kontribusi akan menjadi amal jariyah yang terus mengalir."
+            />
 
-      <div className="mx-auto max-w-6xl mb-10">
-             <h1 className="text-3xl md:text-4xl font-bold text-gray-900">
-            Sudah Persiapkan <span className="text-gray-400">Investasi Akhirat</span> Anda Hari Ini?
-          </h1>
+            <Card className="mt-8 overflow-hidden border-border/60 p-0 shadow-soft">
+              <Image
+                src="/images/program-wakaf.png"
+                alt="Poster program wakaf jariyah Masjid Muhammad Al Qosim"
+                width={720}
+                height={1280}
+                sizes="(min-width: 1024px) 480px, 100vw"
+                className="h-auto w-full object-cover"
+              />
+            </Card>
+          </div>
 
-          <p className="text-gray-600 leading-relaxed max-w-xl">
-            "Mari salurkan kebaikan dengan infaq terbaik hari ini."
-          </p>
-      </div>
-       
-      <div className="mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-10">
-      
-
-        {/* LEFT CONTENT */}
-        <section className="space-y-6">
-      
-         
-            <Image
-                            src="/images/program-wakaf.png"
-                            alt="poster program wakaf jariyah"
-                            width={360}
-                            height={640}
-                            priority
-                            className="w-full h-auto"
-                          />
-        </section>
-
-        {/* RIGHT CARD */}
-        <DonasiCard />
-      </div>
-    </main>
+          <DonasiCard />
+        </div>
+      </Container>
+    </Section>
   );
 }

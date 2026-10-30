@@ -1,40 +1,29 @@
-// components/utils/client-only.tsx
 "use client";
 
-import { useEffect, useState } from "react";
-
-export function ClientOnly({ children }: { children: React.ReactNode }) {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => setMounted(true), []);
-
-  if (!mounted) return null;
-  return <>{children}</>;
-}
-
-// React and Next Imports
 import * as React from "react";
-import Link, { LinkProps } from "next/link";
+import Image from "next/image";
+import Link, { type LinkProps } from "next/link";
 import { useRouter } from "next/navigation";
+import { ArrowRight, HeartHandshake, Menu } from "lucide-react";
 
-// Utility Imports
-import { Menu, ArrowRightSquare } from "lucide-react";
-import { cn } from "@/lib/utils";
-
-// Component Imports
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import {
   Sheet,
   SheetContent,
-  SheetTrigger,
-  SheetTitle,
+  SheetDescription,
+  SheetFooter,
   SheetHeader,
+  SheetTitle,
+  SheetTrigger,
 } from "@/components/ui/sheet";
 import { Separator } from "@/components/ui/separator";
 
-import { mainMenu, contentMenu } from "@/lib/menu.config";
+import { contentMenu, mainMenu } from "@/lib/menu.config";
 import { siteConfig } from "@/lib/site.config";
+import { cn } from "@/lib/utils";
+
+import Alqosim from "@/public/icons/alqosim-logo.ico";
 
 export function MobileNav() {
   const [open, setOpen] = React.useState(false);
@@ -44,43 +33,76 @@ export function MobileNav() {
       <SheetTrigger asChild>
         <Button
           variant="ghost"
-          className="px-0 border w-10 text-base hover:bg-white focus-visible:bg-white focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
+          size="icon"
+          className="rounded-full md:hidden"
+          aria-label="Buka menu navigasi"
         >
-          <Menu />
-          <span className="sr-only">Toggle Menu</span>
+          <Menu className="size-5" />
         </Button>
       </SheetTrigger>
-      <SheetContent side="left" className="pr-0">
-        <SheetHeader>
-          <SheetTitle className="text-left">
-            <MobileLink
-              href="/"
-              className="flex items-center"
-              onOpenChange={setOpen}
-            >
-              <ArrowRightSquare className="mr-2 h-4 w-4" />
-              <span>{siteConfig.site_name}</span>
-            </MobileLink>
+
+      <SheetContent side="left" className="flex w-[88%] flex-col p-0 sm:max-w-sm">
+        <SheetHeader className="border-b border-border/60 px-6 py-5 text-left">
+          <SheetTitle className="flex items-center gap-3 text-left">
+            <Image
+              src={Alqosim}
+              alt=""
+              width={40}
+              height={40}
+              className="h-10 w-10 object-contain"
+            />
+            <span className="flex flex-col">
+              <span className="text-sm font-semibold">{siteConfig.site_name}</span>
+              <span className="text-xs font-normal text-muted-foreground">
+                Boja Mengaji
+              </span>
+            </span>
           </SheetTitle>
+          <SheetDescription className="sr-only">
+            Menu navigasi situs Masjid Muhammad Al Qosim
+          </SheetDescription>
         </SheetHeader>
-        <ScrollArea className="my-4 h-[calc(100vh-8rem)] pb-10 pl-6">
-          <div className="flex flex-col space-y-3">
-            <h3 className="text-small mt-6">Menu</h3>
+
+        <ScrollArea className="flex-1 px-6 py-6">
+          <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-1">
+              <p className="px-2 pb-1 text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                Menu
+              </p>
+              {Object.entries(mainMenu).map(([label, href]) => (
+                <MobileLink key={href} href={href} onOpenChange={setOpen}>
+                  {label.charAt(0).toUpperCase() + label.slice(1)}
+                </MobileLink>
+              ))}
+            </div>
+
             <Separator />
-            {Object.entries(mainMenu).map(([key, href]) => (
-              <MobileLink key={key} href={href} onOpenChange={setOpen}>
-                {key.charAt(0).toUpperCase() + key.slice(1)}
-              </MobileLink>
-            ))}
-            <h3 className="text-small pt-6">Blog Menu</h3>
-            <Separator />
-            {Object.entries(contentMenu).map(([key, href]) => (
-              <MobileLink key={key} href={href} onOpenChange={setOpen}>
-                {key.charAt(0).toUpperCase() + key.slice(1)}
-              </MobileLink>
-            ))}
+
+            <div className="flex flex-col gap-1">
+              <p className="px-2 pb-1 text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                Blog
+              </p>
+              {Object.entries(contentMenu).map(([label, href]) => (
+                <MobileLink key={href} href={href} onOpenChange={setOpen}>
+                  {label.charAt(0).toUpperCase() + label.slice(1)}
+                </MobileLink>
+              ))}
+            </div>
           </div>
         </ScrollArea>
+
+        <SheetFooter className="border-t border-border/60 p-6">
+          <Button asChild variant="accent" className="w-full rounded-full">
+            <Link
+              href="/wakaf/peluang-jariyah"
+              onClick={() => setOpen(false)}
+            >
+              <HeartHandshake className="size-4" />
+              Dukung Wakaf Jariyah
+              <ArrowRight className="size-4" />
+            </Link>
+          </Button>
+        </SheetFooter>
       </SheetContent>
     </Sheet>
   );
@@ -100,6 +122,7 @@ function MobileLink({
   ...props
 }: MobileLinkProps) {
   const router = useRouter();
+
   return (
     <Link
       href={href}
@@ -107,10 +130,14 @@ function MobileLink({
         router.push(href.toString());
         onOpenChange?.(false);
       }}
-      className={cn("text-lg", className)}
+      className={cn(
+        "flex items-center justify-between rounded-xl px-3 py-2.5 text-base font-medium text-foreground transition-colors hover:bg-secondary",
+        className,
+      )}
       {...props}
     >
       {children}
+      <ArrowRight className="size-4 text-muted-foreground" />
     </Link>
   );
 }

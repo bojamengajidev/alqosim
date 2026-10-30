@@ -1,88 +1,73 @@
-import {
-  Card,
-  CardContent,
-} from "@/components/ui/card"
-import { BookOpen, Heart, Users, HandCoins } from "lucide-react"
-import BlogCard from "./blog-card"
+import { BookOpen, GraduationCap, HandCoins, Users } from "lucide-react";
+
+import { Container, Section } from "@/components/craft";
+import { SectionHeader } from "@/components/shared/section-header";
+import { Card, CardContent } from "@/components/ui/card";
+
+import BlogCard from "./blog-card";
 
 const features = [
   {
     icon: BookOpen,
     title: "Kajian",
-    desc: "Majelis Ilmu Syar'i",
+    description: "Majelis ilmu syar'i untuk menambah pemahaman agama.",
   },
   {
-    icon: Heart,
+    icon: GraduationCap,
     title: "Pendidikan",
-    desc: "Sekolah TK & SD Islam",
+    description: "Sekolah TK & SD Islam dengan kurikulum yang terarah.",
   },
   {
     icon: Users,
     title: "Komunitas",
-    desc: "Merajut Ukhuwah Islamiyah",
+    description: "Merajut ukhuwah Islamiyah antar jamaah dan keluarga.",
   },
   {
     icon: HandCoins,
     title: "Sosial",
-    desc: "Sosial Kemasyarakatan",
+    description: "Program sosial kemasyarakatan dan kepedulian umat.",
   },
-]
+];
 
-export default function BlogSection() {
+export default function ProgramsSection() {
   return (
-   <main>
-     <section className="mb-20 px-5">
-     <div className="grid grid-cols-1 lg:grid-cols-2">
-     <section className="py-12 ">
-      <h1 className="text-2xl font-semibold leading-none tracking-tight py-2 dark:invert">Boja Mengaji</h1>
-      <p className="dark:invert">Kami berfokus memberikan kontribusi terbaik bagi kaum muslimin.</p>
-         <div className="grid grid-cols-2 py-5 gap-6">
-        {features.map((item, i) => (
-          <Card
-            key={i}
-            className="
-              h-full
-              rounded-2xl
-              border
-              hover:shadow-md
-              transition
-            "
-          >
-            <CardContent
-              className="
-                flex flex-col items-center
-                text-center
-                gap-4
-                p-6
-              "
-            >
-              <div
-                className="
-                  flex h-12 w-12 items-center
-                  justify-center
-                  rounded-xl
-                  bg-primary/10
-                  text-primary
-                "
-              >
-                <item.icon className="h-6 w-6" />
-              </div>
+    <Section>
+      <Container>
+        <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+          <div>
+            <SectionHeader
+              eyebrow="Boja Mengaji"
+              title="Ruang tumbuh untuk ilmu, iman, dan ukhuwah"
+              description="Kami berfokus memberikan kontribusi terbaik bagi kaum muslimin melalui kajian, pendidikan, komunitas, dan program sosial."
+            />
 
-              <h2 className="font-semibold text-lg">
-                {item.title}
-              </h2>
+            <div className="mt-8 grid gap-3 sm:grid-cols-2">
+              {features.map((feature) => (
+                <Card
+                  key={feature.title}
+                  className="group border-border/60 shadow-none transition-colors hover:border-primary/30 hover:bg-primary/[0.03]"
+                >
+                  <CardContent className="flex gap-4 p-5">
+                    <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                      <feature.icon className="size-5" />
+                    </span>
+                    <span className="flex flex-col gap-1">
+                      <span className="text-sm font-semibold text-foreground">
+                        {feature.title}
+                      </span>
+                      <span className="text-xs leading-relaxed text-muted-foreground">
+                        {feature.description}
+                      </span>
+                    </span>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
 
-              <p className="text-sm text-muted-foreground">
-                {item.desc}
-              </p>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
-    </section>
-    <BlogCard />    
-     </div>
-     </section>
-   </main>
-  )
+          <BlogCard />
+        </div>
+      </Container>
+    </Section>
+  );
 }

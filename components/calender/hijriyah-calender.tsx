@@ -1,7 +1,13 @@
 "use client";
 
 import * as React from "react";
+import { CalendarDays, MoonStar } from "lucide-react";
+
 import { Calendar } from "@/components/ui/calendar";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/components/ui/card";
+import { Skeleton } from "@/components/ui/skeleton";
+
 import { getHijriDate } from "@/lib/hijri";
 import { useMounted } from "@/lib/hooks/use-mounted";
 import { cn } from "@/lib/utils";
@@ -10,13 +16,19 @@ type HijriCalendarProps = {
   className?: string;
 };
 
+type HijriDate = {
+  day: string | number;
+  month: { en: string; ar?: string; number?: number };
+  year: string | number;
+};
+
 export function HijriCalendar({ className }: HijriCalendarProps) {
   const mounted = useMounted();
 
   const [date, setDate] = React.useState<Date>();
-  const [hijri, setHijri] = React.useState<any>(null);
-  const [isAyamulBidh, setIsAyamulBidh] = React.useState(false);
-
+  const [hijri, setHijri] = React.useState<HijriDate | null>(null);
+  const [isAyyamulBidh, setIsAyyamulBidh] = React.useState(false);
+  const [hasError, setHasError] = React.useState(false);
 
   React.useEffect(() => {
     if (!mounted) return;
@@ -25,44 +37,81 @@ export function HijriCalendar({ className }: HijriCalendarProps) {
 
   React.useEffect(() => {
     if (!date) return;
-    getHijriDate(date).then((res) => {
-    setHijri(res);
 
-    const hijriDay = Number(res.day);
-    setIsAyamulBidh([13, 14, 15].includes(hijriDay));
-  });
+    let active = true;
+
+    setHasError(false);
+
+    getHijriDate(date)
+      .then((res) => {
+        if (!active) return;
+        setHijri(res);
+        const hijriDay = Number(res.day);
+        setIsAyyamulBidh([13, 14, 15].includes(hijriDay));
+      })
+      .catch(() => {
+        if (!active) return;
+        setHijri(null);
+        setIsAyyamulBidh(false);
+        setHasError(true);
+      });
+
+    return () => {
+      active = false;
+    };
   }, [date]);
 
-  if (!mounted) return null; // 🔥 anti hydration error
+  if (!mounted) {
+    return <Skeleton className={cn("h-[23rem] w-full max-w-md", className)} />;
+  }
 
   return (
-   <div  className={cn(
-    "w-full max-w-xs sm:max-w-sm md:max-w-md",
-    "overflow-hidden rounded-lg border bg-background p-2 sm:p-3",
-    "flex flex-col items-center justify-center gap-2",
-    className
-  )}>
-  <Calendar
-    mode="single"
-    selected={date}
-    onSelect={setDate}
-    className={cn(
-    "h-sm w-sm rounded-lg",
-  )}
-  />
-      {hijri && (
-       <div className="text-sm text-left font-medium flex items-center gap-2">
-    <span>
-      {hijri.day} {hijri.month.en} {hijri.year} H
-    </span>
-
-    {isAyamulBidh && (
-      <span className="rounded-full bg-green-100 px-2 py-0.5 text-xs text-green-700">
-        🌕 Ayyamul Bidh
-      </span>
-    )}
-  </div>
+    <Card
+      className={cn(
+        "w-full max-w-md overflow-hidden border-border/60 shadow-soft",
+        className,
       )}
-    </div>
+    >
+      <CardContent className="flex flex-col items-center gap-3 p-4 sm:p-5">
+        <div className="flex w-full items-center justify-between gap-3">
+          <span className="inline-flex items-center gap-2 text-sm font-medium text-foreground">
+            <CalendarDays className="size-4 text-primary" />
+            Kalender Hijriyah
+          </span>
+          <Badge variant="soft" className="gap-1">
+            <MoonStar className="size-3" />
+            {date?.toLocaleDateString("id-ID", { month: "long" })}
+          </Badge>
+        </div>
+
+        <Calendar
+          mode="single"
+          selected={date}
+          onSelect={setDate}
+          className="w-full rounded-xl"
+        />
+
+        {hijri ? (
+          <div
+            className="flex flex-wrap items-center justify-center gap-2 text-sm font-medium text-foreground"
+            aria-live="polite"
+          >
+            <span>
+              {hijri.day} {hijri.month.en} {hijri.year} H
+            </span>
+
+            {isAyyamulBidh ? (
+              <Badge variant="accent" className="gap-1">
+                🌕 Ayyamul Bidh
+              </Badge>
+            ) : null}
+          </div>
+        ) : hasError ? (
+          <p className="text-xs text-muted-foreground" aria-live="polite">
+            Tanggal hijriyah tidak tersedia saat ini.
+          </p>
+        ) : null}
+      </CardContent>
+    </Card>
   );
 }

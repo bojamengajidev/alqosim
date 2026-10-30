@@ -1,64 +1,49 @@
-"use client"
-
-import dynamic from "next/dynamic";
+import { Container, Section } from "@/components/craft";
+import { SectionHeader } from "@/components/shared/section-header";
 import { HijriCalendar } from "@/components/calender/hijriyah-calender";
+import { QuotesRotator } from "@/components/section/quotes";
 
-
-const QuotesRotator = dynamic(
-  () => import("@/components/section/quotes").then(m => m.QuotesRotator),
-  {
-    ssr: false,
-    loading: () => (
-      <div className="h-40 rounded-xl bg-slate-100 dark:bg-slate-900 animate-pulse" />
-    ),
-  }
-);
-
-export default function SubHeader() {
+export default function CalendarAndHadith() {
   return (
-    <section className="py-14">
-      <div className="container mx-auto">
-        <div className="flex flex-col gap-12 lg:flex-row lg:items-start">
+    <Section className="pt-0">
+      <Container>
+        <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+          <div>
+            <SectionHeader
+              eyebrow="Kalender"
+              title="Kalender & pengingat ibadah"
+              description="Kalender hijriyah dilengkapi pengingat Ayyamul Bidh pada tanggal 13, 14, dan 15 setiap bulan hijriyah."
+            />
 
-          {/* KALENDER — 40% */}
-          <div className="w-full lg:basis-[40%] lg:max-w-[40%] max-w-md mx-auto lg:mx-0">
-            <h1 className="text-xl md:text-2xl lg:text-3xl font-bold mb-5 dark:invert">
-              Kalender
-            </h1>
-            <HijriCalendar />
-            <p className="py-2 text-sm text-justify lg:text-base text-gray-600">
-              Kalender hijriyah dilengkapi dengan pengingat ayyamul bidh. Setiap tanggal 13,14,15 bulan hijriyah. 
+            <div className="mt-6">
+              <HijriCalendar />
+            </div>
+
+            <p className="mt-4 max-w-md text-sm leading-relaxed text-muted-foreground">
+              Gunakan kalender ini untuk membantu merencanakan puasa sunnah dan
+              amalan lain di bulan hijriyah.
             </p>
           </div>
 
-          {/* QUOTES — 60% */}
-          <div className="w-full lg:basis-[60%] lg:max-w-[60%]">
-            <h1 className="text-xl md:text-2xl lg:text-3xl font-bold mb-5 dark:invert">
-              Kutipan Hadits
-            </h1>
+          <div>
+            <SectionHeader
+              eyebrow="Kutipan Hadits"
+              title="Pengingat dari Sunnah"
+              description="Hadits-hadits shahih pilihan sebagai pengingat jiwa, semoga kita mudah meneladani Rasulullah ﷺ."
+            />
 
-
-            <div className="
-              relative
-              -mx-4 md:mx-0
-              overflow-x-auto
-              motion-safe:animate-in
-              motion-safe:fade-innp
-              motion-safe:slide-in-from-bottom-2
-              duration-500
-              will-change-transform
-            ">
+            <div className="mt-6">
               <QuotesRotator />
-
-              <p className="py-2 text-justify text-sm lg:text-base text-gray-600 max-w-2xl">
-                Menyajikan hadits-hadits shahih pilihan sebagai pengingat jiwa, Semoga kita dapat memperoleh pelajaran serta kemudahan dalam meneladani dan mengikuti beliau Shalallahu A'laihi Wasalam.
-              </p>
-
             </div>
-          </div>
 
+            <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground">
+              Menyajikan hadits-hadits shahih pilihan sebagai pengingat jiwa,
+              semoga kita memperoleh pelajaran serta kemudahan dalam meneladani
+              dan mengikuti beliau Shalallahu &apos;Alaihi Wasalam.
+            </p>
+          </div>
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   );
 }

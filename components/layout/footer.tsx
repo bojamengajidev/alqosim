@@ -1,83 +1,140 @@
-import { Section, Container } from "@/components/craft";
-import { ThemeToggle } from "@/components/theme/theme-toggle";
-import { mainMenu, contentMenu } from "@/lib/menu.config";
-import { siteConfig } from "@/lib/site.config";
-import Logo from "@/public/icons/bojamengaji.ico";
-import YKBM from "@/public/icons/ykbm-logo.ico";
-import Alqosim from "@/public/icons/alqosim-logo.ico";
 import Image from "next/image";
 import Link from "next/link";
+import { MapPin, MessageCircle, Youtube } from "lucide-react";
+
+import { Container, Section } from "@/components/craft";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
+
+import { contentMenu, mainMenu } from "@/lib/menu.config";
+import { siteConfig } from "@/lib/site.config";
+
+import Alqosim from "@/public/icons/alqosim-logo.ico";
+import Logo from "@/public/icons/bojamengaji.ico";
+import YKBM from "@/public/icons/ykbm-logo.ico";
 
 export default function Footer() {
   return (
-    <footer>
+    <footer className="border-t border-border/60 bg-muted/30">
       <Section>
-        <Container className="grid md:grid-cols-[1.5fr_0.5fr_0.5fr] gap-12">
-          <div className="flex flex-col gap-6 not-prose">
-            <Link href="/" className="flex items-center gap-3">
-              <h1 className="sr-only">{siteConfig.site_name}</h1>
-           
-             <Image
-              src={YKBM}
-              alt="Yayasan Kajian Boja Mengaji"
-              width={48}
-              height={48}
-              className="w-13 h-auto"
-            
-            />
-
-                <Image
-              src={Logo}
-              alt="Logo"
-              width={56}
-              height={56}
-              className="w-auto h-13 dark:invert"
-            />
-
-                <Image
-              src={Alqosim}
-              alt="Logo"
-              width={46}
-              height={46}
-              className="w-13 h-auto dark:invert"
-            />
-            
-            </Link>
-            <p className="dark:invert">{siteConfig.site_description}</p>
-          </div>
-          <div className="flex flex-col gap-2 text-sm">
-            <h2 className="font-medium text-base dark:invert">Website</h2>
-            {Object.entries(mainMenu).map(([key, href]) => (
+        <Container>
+          <div className="grid gap-12 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
+            <div className="flex flex-col gap-5">
               <Link
-                className="hover:underline underline-offset-4 dark:invert"
-                key={href}
-                href={href}
+                href="/"
+                aria-label="Beranda Masjid Muhammad Al Qosim"
+                className="flex items-center gap-3"
               >
-                {key.charAt(0).toUpperCase() + key.slice(1)}
+                <span className="flex items-center gap-2">
+                  <Image
+                    src={Alqosim}
+                    alt="Logo Masjid Muhammad Al Qosim"
+                    width={44}
+                    height={44}
+                    className="h-11 w-11 object-contain"
+                  />
+                  <Image
+                    src={YKBM}
+                    alt="Logo Yayasan Kajian Boja Mengaji"
+                    width={44}
+                    height={44}
+                    className="h-11 w-11 object-contain"
+                  />
+                  <Image
+                    src={Logo}
+                    alt="Logo Boja Mengaji"
+                    width={44}
+                    height={44}
+                    className="h-11 w-11 object-contain"
+                  />
+                </span>
               </Link>
-            ))}
+
+              <p className="max-w-sm text-sm leading-relaxed text-muted-foreground">
+                {siteConfig.site_description}. Pusat dakwah, pendidikan, dan
+                pembinaan umat berdasarkan Al-Qur&apos;an dan Sunnah.
+              </p>
+
+              <div className="flex flex-col gap-2 text-sm text-muted-foreground">
+                <span className="inline-flex items-center gap-2">
+                  <MapPin className="size-4 shrink-0 text-primary" />
+                  Boja, Kendal, Jawa Tengah
+                </span>
+              </div>
+            </div>
+
+            <FooterColumn title="Website" items={mainMenu} />
+            <FooterColumn title="Blog" items={contentMenu} />
+
+            <div className="flex flex-col gap-4 text-sm">
+              <h2 className="text-sm font-semibold text-foreground">Terhubung</h2>
+              <div className="flex flex-col gap-2 text-muted-foreground">
+                <Link
+                  href="https://www.youtube.com/@bojamengaji"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 transition-colors hover:text-foreground"
+                >
+                  <Youtube className="size-4 text-primary" />
+                  YouTube Boja Mengaji
+                </Link>
+                <Link
+                  href="https://api.whatsapp.com/send/?phone=6285156245768&text&type=phone_number&app_absent=0"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 transition-colors hover:text-foreground"
+                >
+                  <MessageCircle className="size-4 text-primary" />
+                  WhatsApp Admin
+                </Link>
+              </div>
+
+              <Button asChild variant="outline" size="sm" className="mt-2 w-fit rounded-full">
+                <Link href="/wakaf/peluang-jariyah">Dukung Wakaf</Link>
+              </Button>
+            </div>
           </div>
-          <div className="flex flex-col gap-2 text-sm">
-            <h3 className="font-medium text-base dark:invert">Blog</h3>
-            {Object.entries(contentMenu).map(([key, href]) => (
-              <Link
-                className="hover:underline underline-offset-4 dark:invert"
-                key={href}
-                href={href}
-              >
-                {key.charAt(0).toUpperCase() + key.slice(1)}
-              </Link>
-            ))}
+
+          <Separator className="my-10" />
+
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <p className="text-xs text-muted-foreground">
+              &copy; {new Date().getFullYear()} {siteConfig.site_name}. Seluruh
+              hak dilindungi.
+            </p>
+            <div className="flex items-center gap-3">
+              <span className="text-xs text-muted-foreground">
+                Boja Mengaji
+              </span>
+            </div>
           </div>
-        </Container>
-        <Container className="border-t not-prose flex flex-col md:flex-row md:gap-2 gap-6 justify-between md:items-center">
-          <ThemeToggle />
-          <p className="text-muted-foreground ">
-            &copy; <a className="dark:invert" href="/">BojaMengaji</a>. All rights reserved.
-            2026.
-          </p>
         </Container>
       </Section>
     </footer>
+  );
+}
+
+function FooterColumn({
+  title,
+  items,
+}: {
+  title: string;
+  items: Record<string, string>;
+}) {
+  return (
+    <div className="flex flex-col gap-4 text-sm">
+      <h2 className="text-sm font-semibold text-foreground">{title}</h2>
+      <div className="flex flex-col gap-2 text-muted-foreground">
+        {Object.entries(items).map(([label, href]) => (
+          <Link
+            key={href}
+            href={href}
+            className="w-fit transition-colors hover:text-foreground"
+          >
+            {label.charAt(0).toUpperCase() + label.slice(1)}
+          </Link>
+        ))}
+      </div>
+    </div>
   );
 }

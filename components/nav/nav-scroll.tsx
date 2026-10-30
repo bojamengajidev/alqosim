@@ -1,6 +1,7 @@
-'use client';
+"use client";
 
 import { useEffect, useState } from "react";
+
 import { cn } from "@/lib/utils";
 
 export function NavScroll({
@@ -25,11 +26,12 @@ export function NavScroll({
   return (
     <div
       className={cn(
-        "sticky top-0 z-50 transition-all duration-300",
+        "sticky top-0 z-50 w-full transition-all duration-300",
+        "supports-[backdrop-filter]:bg-background/75 bg-background/90 backdrop-blur-md",
         scrolled
-          ? "bg-white border-b shadow-sm"
-          : "bg-white",
-        className
+          ? "border-border/70 shadow-[0_1px_0_rgb(28_38_33/0.04)]"
+          : "border-transparent",
+        className,
       )}
     >
       {children}
