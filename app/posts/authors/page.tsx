@@ -1,13 +1,14 @@
-import { getAllAuthors } from "@/lib/wordpress";
-import { ArchiveList } from "@/components/archive-list";
-import type { Author } from "@/lib/wordpress.d";
 import type { Metadata } from "next";
+
+import { ArchiveList } from "@/components/archive-list";
+import { getAllAuthors } from "@/lib/wordpress";
+import type { Author } from "@/lib/wordpress.d";
 
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
-  title: "All Authors",
-  description: "Browse all authors of our blog posts",
+  title: "Semua Penulis",
+  description: "Jelajahi penulis artikel blog Masjid Muhammad Al Qosim.",
   alternates: {
     canonical: "/posts/authors",
   },
@@ -18,11 +19,13 @@ export default async function Page() {
 
   return (
     <ArchiveList<Author>
-      title="All Authors"
+      eyebrow="Blog"
+      title="Semua Penulis"
+      description="Kenali para penulis yang berkontribusi di blog kami."
       items={authors}
-      getItemHref={(a) => `/posts/?author=${a.id}`}
+      getItemHref={(a) => `/posts?author=${a.id}`}
       getItemLabel={(a) => a.name}
-      emptyMessage="No authors available yet."
+      emptyMessage="Penulis akan tampil di sini setelah tersedia."
     />
   );
 }

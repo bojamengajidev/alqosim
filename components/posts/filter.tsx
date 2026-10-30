@@ -1,6 +1,10 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
+import { RotateCcw } from "lucide-react";
+
+import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
 import {
   Select,
   SelectContent,
@@ -8,8 +12,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Button } from "@/components/ui/button";
-import type { Author, Tag, Category } from "@/lib/wordpress.d";
+
+import type { Author, Category, Tag } from "@/lib/wordpress.d";
 import { ClientOnly } from "../utils/client-only";
 
 interface FilterPostsProps {
@@ -36,7 +40,11 @@ export function FilterPosts({
     const newParams = new URLSearchParams(searchParams.toString());
     newParams.delete("page");
     newParams.delete("search");
-    value === "all" ? newParams.delete(type) : newParams.set(type, value);
+    if (value === "all") {
+      newParams.delete(type);
+    } else {
+      newParams.set(type, value);
+    }
 
     router.push(`/posts?${newParams.toString()}`);
     router.refresh();
@@ -51,74 +59,94 @@ export function FilterPosts({
   const hasAuthors = authors.length > 0;
 
   return (
-    <div className="grid md:grid-cols-[1fr_1fr_1fr_0.5fr] gap-2 my-4 z-10">
-     <ClientOnly>
-        <Select
-        value={selectedTag || "all"}
-        onValueChange={(value) => handleFilterChange("tag", value)}
-      >
-        <SelectTrigger disabled={!hasTags}>
-          {hasTags ? <SelectValue placeholder="All Tags" /> : "No tags found"}
-        </SelectTrigger>
-        <SelectContent>
-          <SelectItem value="all">All Tags</SelectItem>
-          {tags.map((tag) => (
-            <SelectItem key={tag.id} value={tag.id.toString()}>
-              {tag.name}
-            </SelectItem>
-          ))}
-        </SelectContent>
-      </Select>
-      </ClientOnly>
+    <div className="mt-3 grid gap-3 md:grid-cols-[1fr_1fr_1fr_auto]">
+      <div className="flex flex-col gap-1.5">
+        <Label className="text-xs text-muted-foreground">Tag</Label>
+        <ClientOnly>
+          <Select
+            value={selectedTag || "all"}
+            onValueChange={(value) => handleFilterChange("tag", value)}
+          >
+            <SelectTrigger disabled={!hasTags} aria-label="Filter tag">
+              {hasTags ? <SelectValue placeholder="Semua tag" /> : "Tag belum tersedia"}
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">Semua Tag</SelectItem>
+              {tags.map((tag) => (
+                <SelectItem key={tag.id} value={tag.id.toString()}>
+                  {tag.name}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </ClientOnly>
+      </div>
 
-     <ClientOnly> 
-       <Select
-        value={selectedCategory || "all"}
-        onValueChange={(value) => handleFilterChange("category", value)}
-      >
-        <SelectTrigger disabled={!hasCategories}>
-          {hasCategories ? (
-            <SelectValue placeholder="All Categories" />
-          ) : (
-            "No categories found"
-          )}
-        </SelectTrigger>
-        <SelectContent>
-          <SelectItem value="all">All Categories</SelectItem>
-          {categories.map((category) => (
-            <SelectItem key={category.id} value={category.id.toString()}>
-              {category.name}
-            </SelectItem>
-          ))}
-        </SelectContent>
-      </Select></ClientOnly>
+      <div className="flex flex-col gap-1.5">
+        <Label className="text-xs text-muted-foreground">Kategori</Label>
+        <ClientOnly>
+          <Select
+            value={selectedCategory || "all"}
+            onValueChange={(value) => handleFilterChange("category", value)}
+          >
+            <SelectTrigger disabled={!hasCategories} aria-label="Filter kategori">
+              {hasCategories ? (
+                <SelectValue placeholder="Semua kategori" />
+              ) : (
+                "Kategori belum tersedia"
+              )}
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">Semua Kategori</SelectItem>
+              {categories.map((category) => (
+                <SelectItem key={category.id} value={category.id.toString()}>
+                  {category.name}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </ClientOnly>
+      </div>
 
-      <ClientOnly>
-        <Select
-        value={selectedAuthor || "all"}
-        onValueChange={(value) => handleFilterChange("author", value)}
-      >
-        <SelectTrigger disabled={!hasAuthors} className="text-center">
-          {hasAuthors ? (
-            <SelectValue placeholder="All Authors" />
-          ) : (
-            "No authors found"
-          )}
-        </SelectTrigger>
-        <SelectContent>
-          <SelectItem value="all">All Authors</SelectItem>
-          {authors.map((author) => (
-            <SelectItem key={author.id} value={author.id.toString()}>
-              {author.name}
-            </SelectItem>
-          ))}
-        </SelectContent>
-      </Select>
-      </ClientOnly>
+      <div className="flex flex-col gap-1.5">
+        <Label className="text-xs text-muted-foreground">Penulis</Label>
+        <ClientOnly>
+          <Select
+            value={selectedAuthor || "all"}
+            onValueChange={(value) => handleFilterChange("author", value)}
+          >
+            <SelectTrigger disabled={!hasAuthors} aria-label="Filter penulis">
+              {hasAuthors ? (
+                <SelectValue placeholder="Semua penulis" />
+              ) : (
+                "Penulis belum tersedia"
+              )}
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">Semua Penulis</SelectItem>
+              {authors.map((author) => (
+                <SelectItem key={author.id} value={author.id.toString()}>
+                  {author.name}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </ClientOnly>
+      </div>
 
-      <Button variant="outline" onClick={handleResetFilters}>
-        Reset Filters
-      </Button>
+      <div className="flex flex-col gap-1.5">
+        <span className="hidden text-xs text-muted-foreground md:block">
+          &nbsp;
+        </span>
+        <Button
+          variant="outline"
+          onClick={handleResetFilters}
+          className="rounded-xl"
+        >
+          <RotateCcw className="size-4" />
+          Reset
+        </Button>
+      </div>
     </div>
   );
 }

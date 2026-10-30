@@ -1,13 +1,14 @@
-import { getAllTags } from "@/lib/wordpress";
-import { ArchiveList } from "@/components/archive-list";
-import type { Tag } from "@/lib/wordpress.d";
 import type { Metadata } from "next";
+
+import { ArchiveList } from "@/components/archive-list";
+import { getAllTags } from "@/lib/wordpress";
+import type { Tag } from "@/lib/wordpress.d";
 
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
-  title: "All Tags",
-  description: "Browse all tags of our blog posts",
+  title: "Semua Tag",
+  description: "Jelajahi tag artikel blog Masjid Muhammad Al Qosim.",
   alternates: {
     canonical: "/posts/tags",
   },
@@ -18,11 +19,13 @@ export default async function Page() {
 
   return (
     <ArchiveList<Tag>
-      title="All Tags"
+      eyebrow="Blog"
+      title="Semua Tag"
+      description="Temukan artikel berdasarkan topik yang Anda minati."
       items={tags}
-      getItemHref={(t) => `/posts/?tag=${t.id}`}
+      getItemHref={(t) => `/posts?tag=${t.id}`}
       getItemLabel={(t) => t.name}
-      emptyMessage="No tags available yet."
+      emptyMessage="Tag akan tampil di sini setelah tersedia."
     />
   );
 }

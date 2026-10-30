@@ -1,31 +1,21 @@
+import { Amiri, Lora, Plus_Jakarta_Sans } from "next/font/google";
 
-import { Open_Sans, Lora, Poppins, Amiri,} from "next/font/google";
-
-export const fontSans = Open_Sans({
+export const fontSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  variable: "--font-sans",
+  variable: "--font-jakarta",
   display: "swap",
 });
 
-
-export const fontSerif = Lora({
+export const fontDisplay = Lora({
   subsets: ["latin"],
-  variable: "--font-serif",
-  weight: ["500"],
+  weight: ["500", "600", "700"],
+  variable: "--font-lora",
   display: "swap",
 });
-
-export const fontCaption = Poppins({
-  subsets: ["latin"],
-  weight: ["200","400","600"],
-  variable: "--font-caption",
-  display: "swap",
-})
 
 export const fontArabic = Amiri({
   subsets: ["arabic"],
-  weight: ["700"],
-  variable: "--font-arabic",
+  weight: ["400", "700"],
+  variable: "--font-amiri",
   display: "swap",
 });
-

@@ -1,117 +1,93 @@
-"use client"
-
-import { useRef } from "react"
-
 import {
-  Card,
-  CardContent,
-} from "@/components/ui/card"
+  BookOpen,
+  CalendarCheck,
+  HandCoins,
+  Heart,
+  Moon,
+  Sparkles,
+  Sunrise,
+  Users,
+} from "lucide-react";
 
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel"
-
-import Autoplay from "embla-carousel-autoplay"
-import { BookOpen, Heart, Users, HandCoins } from "lucide-react"
+import { Container, Section } from "@/components/craft";
+import { SectionHeader } from "@/components/shared/section-header";
+import { Card, CardContent } from "@/components/ui/card";
 
 const features = [
   {
     icon: BookOpen,
-    title: "Belajar Al-Qur’an",
-    desc: "Tahsin, Belajar tajwid, dan Mentadaburinya",
+    title: "Belajar Al-Qur'an",
+    description: "Tahsin, belajar tajwid, dan mentadaburi maknanya.",
   },
   {
-    icon: Users,
+    icon: Sparkles,
     title: "Shalat Sunnah Setelah Wudhu",
-    desc: "2 Rakaat setelah wudhu",
+    description: "Dua rakaat shalat sunnah setelah berwudhu.",
   },
   {
     icon: Heart,
     title: "Dzikir Pagi Petang",
-    desc: "Membaca dzikir waktu pagi dan petang",
+    description: "Membaca dzikir pada waktu pagi dan petang.",
   },
   {
-    icon: Users,
+    icon: Sunrise,
     title: "Shalat Dhuha",
-    desc: "2 Rakaat di waktu dhuha",
+    description: "Dua rakaat shalat sunnah di waktu dhuha.",
   },
   {
-    icon: Users,
+    icon: CalendarCheck,
     title: "Puasa Sunnah",
-    desc: "Puasa Senin - Kamis dan Ayyamul bidh",
+    description: "Puasa Senin–Kamis dan Ayyamul Bidh.",
   },
   {
     icon: HandCoins,
     title: "Sedekah",
-    desc: "Berinfaq dengan harta",
+    description: "Berinfaq dan bersedekah dengan harta.",
   },
-    {
-    icon: Users,
+  {
+    icon: Moon,
     title: "Shalat Rawatib",
-    desc: "Shalat sunnah pada waktu rawatib",
+    description: "Shalat sunnah yang mengiringi shalat wajib.",
   },
-  
-]
+  {
+    icon: Users,
+    title: "Ukhuwah",
+    description: "Menjaga silaturahmi dan kebersamaan jamaah.",
+  },
+];
 
-export default function FeatureSection() {
-  const autoplay = useRef(
-    Autoplay({ delay: 3000, stopOnInteraction: true })
-  )
-
+export default function AmalanSection() {
   return (
-    <section className="py-10 px-5">
-      <div className="container mx-auto">
+    <Section className="bg-muted/40">
+      <Container>
+        <SectionHeader
+          align="center"
+          eyebrow="Amalan Sunnah"
+          title="Menjaga amal, menyempurnakan ibadah"
+          description="Semoga Allah Ta'ala memudahkan kita untuk memperhatikan amal ibadah sunnah setelah menyempurnakan ibadah yang wajib."
+        />
 
-        {/* Header */}
-        <div className="mb-12 max-w-2xl mx-auto text-center">
-          <h2 className="text-2xl md:text-3xl font-bold dark:invert">
-            Amalan Sunnah
-          </h2>
-          <p className="mt-4 text-muted-foreground">
-            Semoga Allah Ta’ala memudahkan kita untuk memperhatikan amal ibadah sunnah, setelah menyempurnakan ibadah yang bersifat wajib.
-          </p>
+        <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {features.map((feature) => (
+            <Card
+              key={feature.title}
+              className="group h-full border-border/60 bg-card/80 shadow-none transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/25 hover:shadow-sm"
+            >
+              <CardContent className="flex h-full flex-col gap-3 p-5">
+                <span className="flex size-11 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+                  <feature.icon className="size-5" />
+                </span>
+                <span className="text-sm font-semibold leading-snug text-foreground">
+                  {feature.title}
+                </span>
+                <span className="text-xs leading-relaxed text-muted-foreground">
+                  {feature.description}
+                </span>
+              </CardContent>
+            </Card>
+          ))}
         </div>
-
-        {/* Carousel */}
-        <Carousel
-          plugins={[autoplay.current]}
-          opts={{ align: "start", loop: true}}
-          className="w-full"
-        >
-          <CarouselContent>
-            {features.map((item, i) => (
-              <CarouselItem
-                key={i}
-                className="basis-full sm:basis-1/2 lg:basis-1/4"
-              >
-                <Card className="h-full rounded-2xl hover:shadow-md transition">
-                  <CardContent className="flex flex-col items-center text-center gap-4 p-6">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                      <item.icon className="h-6 w-6" />
-                    </div>
-
-                    <h3 className="font-semibold text-lg">
-                      {item.title}
-                    </h3>
-
-                    <p className="text-sm text-muted-foreground">
-                      {item.desc}
-                    </p>
-                  </CardContent>
-                </Card>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-
-          <CarouselPrevious />
-          <CarouselNext />
-        </Carousel>
-
-      </div>
-    </section>
-  )
+      </Container>
+    </Section>
+  );
 }

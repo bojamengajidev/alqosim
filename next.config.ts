@@ -3,21 +3,27 @@ import type { NextConfig } from "next";
 const wordpressHostname = process.env.WORDPRESS_HOSTNAME;
 const wordpressUrl = process.env.WORDPRESS_URL;
 
+const remotePatterns = wordpressHostname
+  ? [
+      {
+        protocol: "https" as const,
+        hostname: wordpressHostname,
+        pathname: "/wp-content/uploads/**",
+      },
+      {
+        protocol: "http" as const,
+        hostname: wordpressHostname,
+        pathname: "/wp-content/uploads/**",
+      },
+    ]
+  : [];
+
 const nextConfig: NextConfig = {
   trailingSlash: false,
   compress: true,
   reactStrictMode: true,
   images: {
-    remotePatterns: wordpressHostname
-      ? [
-          {
-            protocol: "http",
-            hostname: "blog.masjidalqosim.com",
-            port: "",
-            pathname: "/wp-content/uploads/**",
-          },
-        ]
-      : [],
+    remotePatterns,
   },
 
   async redirects() {
@@ -33,6 +39,5 @@ const nextConfig: NextConfig = {
     ];
   },
 };
-
 
 export default nextConfig;

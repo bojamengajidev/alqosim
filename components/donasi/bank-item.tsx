@@ -1,7 +1,10 @@
 "use client";
 
-import { Bank } from "@/lib/bank";
+import { Copy } from "lucide-react";
 import { toast } from "sonner";
+
+import { Button } from "@/components/ui/button";
+import type { Bank } from "@/lib/bank";
 
 export default function BankItem({ bank }: { bank: Bank }) {
   const copyRekening = async () => {
@@ -18,28 +21,29 @@ export default function BankItem({ bank }: { bank: Bank }) {
   };
 
   return (
-    <div className="flex items-center justify-between gap-4 rounded-xl border bg-gray-50 px-4 py-3 ">
-      <div className="space-y-1">
-         <p className="text-sm font-semibold">
+    <div className="flex flex-col gap-3 rounded-xl border border-border/60 bg-background p-4 sm:flex-row sm:items-center sm:justify-between">
+      <div className="min-w-0 space-y-1">
+        <p className="text-[11px] font-medium uppercase tracking-wider text-muted-foreground">
           {bank.title}
         </p>
-        <p className="text-sm font-medium text-gray-800">
-          {bank.name}
-        </p>
-        <p className="text-sm font-mono text-gray-700">
+        <p className="text-sm font-semibold text-foreground">{bank.name}</p>
+        <p className="font-mono text-base font-semibold tracking-wide text-foreground">
           {bank.rekening}
         </p>
-        <p className="text-xs text-gray-400">
-          a.n {bank.atasNama}
-        </p>
+        <p className="text-xs text-muted-foreground">a.n. {bank.atasNama}</p>
       </div>
 
-      <button
+      <Button
+        type="button"
+        variant="outline"
+        size="sm"
         onClick={copyRekening}
-        className="shrink-0 rounded-md border px-3 py-1 text-xs hover:bg-gray-100"
+        className="shrink-0 rounded-full"
+        aria-label={`Salin nomor rekening ${bank.name}`}
       >
+        <Copy className="size-3.5" />
         Salin
-      </button>
+      </Button>
     </div>
   );
 }

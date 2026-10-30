@@ -1,29 +1,16 @@
-'use client';
+"use client";
 
-import { useEffect } from 'react';
+import { useEffect } from "react";
 
-export default function YouTubeLite({
-  videoId,
-
-}: {
-  videoId: string;
- 
-}) {
+export default function YouTubeLite({ videoId }: { videoId: string }) {
   useEffect(() => {
-    import('lite-youtube-embed');
-    import('lite-youtube-embed/src/lite-yt-embed.css');
+    import("lite-youtube-embed");
+    import("lite-youtube-embed/src/lite-yt-embed.css");
   }, []);
 
-return (
- <div className="overflow-hidden rounded-[20px]">
-
+  return (
     <div className="video-frame">
-      <lite-youtube
-        videoid={videoId}
-        playlabel="Play video"
-      />
+      <lite-youtube videoid={videoId} playlabel="Putar video kajian" />
     </div>
-  </div>
-);
-
+  );
 }

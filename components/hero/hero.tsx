@@ -1,11 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
+import { ArrowRight, MapPin, Sparkles } from "lucide-react";
+
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 
 export default function Hero() {
   return (
-    <section className="relative h-screen w-full overflow-hidden">
-
-      {/* BACKGROUND IMAGE */}
+    <section className="relative isolate flex min-h-[calc(100svh-4rem)] items-end overflow-hidden">
       <Image
         src="/images/drone-2.webp"
         alt="Foto Masjid Muhammad Al Qosim diambil dari udara"
@@ -15,53 +17,59 @@ export default function Hero() {
         className="object-cover"
       />
 
-      {/* OVERLAY */}
-      <div className="absolute inset-0 bg-black/60" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/35 to-black/85" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(0,0,0,0.35)_100%)]" />
 
-      {/* CONTENT */}
-      <div className="relative z-10 flex h-full items-center justify-center">
-        <div className=" mx-auto px-4 text-center text-white">
+      <div className="container relative z-10 pb-20 pt-32 sm:pb-24 lg:pb-28">
+        <div className="max-w-3xl">
+          <Badge
+            variant="outline"
+            className="mb-6 border-white/25 bg-white/10 text-white backdrop-blur"
+          >
+            <Sparkles className="size-3.5 text-accent" />
+            Masjid Muhammad Al Qosim · Boja
+          </Badge>
 
-             <h1  className="
-              hero-title
-              mb-8
-              text-6xl md:wrap-anywhere dark:text-white
-            ">
-              Menebarkan Sunnah Rasulullah ﷺ Membangun Umat
-            </h1>
+          <h1 className="text-balance text-4xl font-semibold leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-6xl">
+            Menebarkan Sunnah Rasulullah ﷺ, Membangun Umat
+          </h1>
 
-         
-
-          <p className="max-w-xl mx-auto mb-28 text-sm md:text-base text-gray">
-            Masjid Muhammad Al Qosim pusat pembinaan umat melalui dakwah dan
-            pendidikan Islam berdasarkan Al-Qur’an dan Sunnah.
+          <p className="mt-6 max-w-xl text-pretty text-sm leading-relaxed text-white/80 sm:text-base">
+            Masjid Muhammad Al Qosim menjadi pusat pembinaan umat melalui
+            dakwah dan pendidikan Islam berdasarkan Al-Qur&apos;an dan Sunnah.
           </p>
 
-          <Link
-            href="/tentang-kami"
-            className="
-              inline-flex items-center gap-2
-              rounded-full
-              bg-[#d97400]
-              px-6 py-3
-              text-sm font-medium
-              transition
-              hover:scale-105
-              hover:shadow-xl
-            "
-          >
-            <Image
-              src="/icons/icon-eye.svg"
-              alt="icon selengkapnya"
-              width={18}
-              height={18}
-            />
-            Selengkapnya
-          </Link>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <Button
+              asChild
+              size="lg"
+              className="rounded-full bg-white text-primary hover:bg-white/90"
+            >
+              <Link href="/tentang-kami">
+                Selengkapnya
+                <ArrowRight className="size-4" />
+              </Link>
+            </Button>
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+              className="rounded-full border-white/30 bg-white/5 text-white hover:bg-white/15 hover:text-white"
+            >
+              <Link href="/kegiatan">Lihat Kegiatan</Link>
+            </Button>
+          </div>
 
+          <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 text-xs text-white/70 sm:text-sm">
+            <span className="inline-flex items-center gap-2">
+              <MapPin className="size-4 text-accent" />
+              Boja, Kendal, Jawa Tengah
+            </span>
+            <span className="hidden h-4 w-px bg-white/20 sm:block" />
+            <span>Dakwah · Pendidikan · Sosial</span>
+          </div>
         </div>
       </div>
-
     </section>
   );
 }

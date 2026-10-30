@@ -1,21 +1,23 @@
+"use client";
+
 import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import { ClientOnly } from "@/components/utils/client-only";
 import { MobileNav } from "@/components/nav/mobile-nav";
 import { NavScroll } from "@/components/nav/nav-scroll";
+import { ThemeToggle } from "@/components/theme/theme-toggle";
+import GradientButton from "@/components/ui/gradientbutton";
 
 import { mainMenu } from "@/lib/menu.config";
-
 import { cn } from "@/lib/utils";
+
 import Logo from "@/public/icons/bojamengaji.ico";
 import YKBM from "@/public/icons/ykbm-logo.ico";
 import Alqosim from "@/public/icons/alqosim-logo.ico";
-import GradientButton from "@/components/ui/gradientbutton";
-
-
 
 interface NavProps {
   className?: string;
@@ -24,66 +26,89 @@ interface NavProps {
 }
 
 export default function Navigation({ className, children, id }: NavProps) {
+  const pathname = usePathname();
+
   return (
     <NavScroll>
       <nav
         id={id}
-        className={cn(
-          "border-b",
-          className
-        )}
+        aria-label="Navigasi utama"
+        className={cn("border-b border-border/60", className)}
       >
-        <div className="mx-auto flex max-w-5xl items-center justify-between py-4">
+        <div className="container flex h-16 items-center justify-between gap-4">
           <Link
             href="/"
-            className="flex items-center transition-opacity hover:opacity-75"
+            aria-label="Beranda Masjid Muhammad Al Qosim"
+            className="group flex min-w-0 items-center gap-3 transition-opacity hover:opacity-80"
           >
-         
-             <Image
-              src={YKBM}
-              alt="logo yayasan boja mengaji"
-              width={48}
-              height={48}
-              className="w-13 h-auto"
-            
-            />
+            <span className="flex shrink-0 items-center gap-1.5">
+              <Image
+                src={Alqosim}
+                alt="Logo Masjid Muhammad Al Qosim"
+                width={44}
+                height={44}
+                className="h-11 w-11 object-contain"
+              />
+              <Image
+                src={YKBM}
+                alt="Logo Yayasan Kajian Boja Mengaji"
+                width={44}
+                height={44}
+                className="hidden h-11 w-11 object-contain sm:block"
+              />
+              <Image
+                src={Logo}
+                alt="Logo Boja Mengaji"
+                width={44}
+                height={44}
+                className="hidden h-11 w-11 object-contain lg:block"
+              />
+            </span>
 
-               <Image
-              src={Logo}
-              alt="Logo  boja mengaji"
-              width={56}
-              height={56}
-              className="w-18 h-auto"
-            />
-
-            <Image
-              src={Alqosim}
-              alt="logo masjid alqosim"
-              width={36}
-              height={36}
-              className="w-auto h-12"
-            
-            />
-            <span className="font-poppins text-sm font-semibold">
-              Masjid Muhammad <br /> Al Qosim
+            <span className="min-w-0 leading-tight">
+              <span className="block truncate text-sm font-semibold tracking-tight text-foreground">
+                Masjid Muhammad
+              </span>
+              <span className="block truncate text-xs text-muted-foreground">
+                Al Qosim · Boja Mengaji
+              </span>
             </span>
           </Link>
 
           {children}
 
           <div className="flex items-center gap-2">
-            <div className="mx-2 hidden md:flex">
-              {Object.entries(mainMenu).map(([label, href]) => (
-                <Button key={href} asChild variant="ghost" size="sm">
-                  <Link href={href}>
-                    {label.charAt(0).toUpperCase() + label.slice(1)}
-                  </Link>
-                </Button>
-              ))}
+            <div className="hidden items-center gap-1 md:flex">
+              {Object.entries(mainMenu).map(([label, href]) => {
+                const active =
+                  href === "/" ? pathname === "/" : pathname.startsWith(href);
+
+                return (
+                  <Button
+                    key={href}
+                    asChild
+                    variant="ghost"
+                    size="sm"
+                    className={cn(
+                      "rounded-full px-3 text-sm text-muted-foreground hover:text-foreground",
+                      active &&
+                        "bg-secondary text-secondary-foreground hover:bg-secondary",
+                    )}
+                  >
+                    <Link
+                      href={href}
+                      aria-current={active ? "page" : undefined}
+                    >
+                      {label.charAt(0).toUpperCase() + label.slice(1)}
+                    </Link>
+                  </Button>
+                );
+              })}
             </div>
 
-          <GradientButton/>
-       
+            <ThemeToggle />
+
+            <GradientButton />
 
             <ClientOnly>
               <MobileNav />

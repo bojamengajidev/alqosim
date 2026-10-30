@@ -88,10 +88,10 @@ const styles = {
     base: [
       "font-sans antialiased",
       // Headings (without spacing)
-      "[&_h1]:text-4xl [&_h1]:font-medium [&_h1]:tracking-tight",
-      "[&_h2]:text-3xl [&_h2]:font-medium [&_h2]:tracking-tight",
-      "[&_h3]:text-2xl [&_h3]:font-medium [&_h3]:tracking-tight",
-      "[&_h4]:text-xl [&_h4]:font-medium [&_h4]:tracking-tight",
+      "[&_h1]:text-4xl [&_h1]:font-display [&_h1]:font-semibold [&_h1]:tracking-tight",
+      "[&_h2]:text-3xl [&_h2]:font-display [&_h2]:font-semibold [&_h2]:tracking-tight",
+      "[&_h3]:text-2xl [&_h3]:font-display [&_h3]:font-semibold [&_h3]:tracking-tight",
+      "[&_h4]:text-xl [&_h4]:font-display [&_h4]:font-semibold [&_h4]:tracking-tight",
       "[&_h5]:text-lg [&_h5]:font-medium [&_h5]:tracking-tight",
       "[&_h6]:text-base [&_h6]:font-medium [&_h6]:tracking-tight",
       // Text elements
@@ -179,9 +179,9 @@ const styles = {
   },
   layout: {
     spacing: "[&>*+*]:mt-6",
-    article: "max-w-prose",
-    container: "max-w-5xl mx-auto p-6 sm:p-8",
-    section: "py-8 md:py-12",
+    article: "max-w-3xl",
+    container: "mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8",
+    section: "py-14 md:py-20",
   },
 };
 
